@@ -68,6 +68,10 @@ var commandKey = [{
 {
   "command": "hello",
   "text": "Hello! Take a look around!"
+},
+{
+  "command": "cat",
+  "text": "You have a cat now."
 }];
  var outsideCommandKey = [
    {
@@ -287,6 +291,9 @@ var mainCommands = [{
 {
   "word":"hi",
   "command":"hello"
+},{
+  "word": "cat",
+  "command": "cat"
 }
 ];
 
@@ -370,6 +377,13 @@ function draw(){
    $(".main-content").css("zIndex", "51");
    $("#main-output").text("You're taking a closer look.");
  }
+ if($("#select-control").val() == "no"){
+   $("#select-control").val("");
+   $(".text-input").css("visibility", "visible");
+   $(".select-input").css("visibility", "hidden");
+   $("#main-output").text("I guess the tree isn't cool enough for you.");
+
+ }
  if(currWorld == "main" && hasCat == true){
    $(".main-content-cat").css("visibility", "visible");
  } else{
@@ -422,13 +436,32 @@ function checkInput(){
             return;
           }
           if(isHot == false && isEmpty == false){
-            $("#main-output").val("YOU DRANK COLD COFFEE. DISGUSTING. GAME OVER.");
+            $("#main-output").text("YOU DRANK COLD COFFEE. DISGUSTING. GAME OVER.");
             $("#main-control").val("");
             return;
           }
           $("#main-output").text(commandKey[i].text);
         }
+        if(command == "outside"){
+          if(hasCat == true){
+            $("#main-output").text("There's nothing else to do outside.");
+            return;
+          }
+        }
+        if(command == "cat"){
+          if(hasCat == true){
+            $("#main-output").text(commandKey[i].text);
+            return;
+          } else{
+            $("#main-output").text("Having a cat would be cool.");
+            return;
+          }
+        }
         if(command == "go"){
+          if(hasCat == true){
+            $("#main-output").text("There's nothing else to do outside.");
+            return;
+          }
           currWorld = "outside";
           isHot = false;
           $(".main-content").css("backgroundImage", 'url("assets/outside.png")');
