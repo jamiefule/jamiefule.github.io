@@ -1,0 +1,147 @@
+body {
+	background-color: black;
+}
+.content{
+	background-color: white;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 840px;
+    height: 640px;
+}
+
+.image{
+	background-image: url("assets/raining4.gif");
+	background-repeat: repeat-x repeat-y;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+.window-color{
+	background-color: #7f9ed8;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+.main-content{
+	background-image: url("assets/coffee.gif");
+	background-repeat: no-repeat;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+.main-content-cat{
+	background-image: url("assets/cat.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	visibility: hidden;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+		z-index:100;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+.award-1{
+background-image:url("assets/coffee-award.png");
+position:absolute;
+top:0;
+left:20;
+width:128px;
+height:62px;
+z-index:100;
+}
+.award-2{
+background-image:url("assets/cat-award.png");
+position:absolute;
+top:0;
+left:20;
+width:128px;
+height:62px;
+z-index:100;
+}
+.award-3{
+background-image:url("assets/dog-award.png");
+position:absolute;
+top:0;
+left:20;
+width:128px;
+height:62px;
+z-index:100;
+}
+
+.text-input{
+		position: fixed;
+	  left: 50%;
+	  bottom: 0px;
+	  transform: translate(-50%, -50%);
+
+}
+
+.select-input{
+		visibility: hidden;
+		position: fixed;
+	  left: 50%;
+	  bottom: 0px;
+	  transform: translate(-50%, -50%);
+		color:white;
+		font-size:40px;
+		font-family: "pixel", Courier, monospace;
+
+}
+
+@font-face{
+	font-family: 'pixel';
+	src: url('assets/advanced_pixel-7.ttf');
+}
+
+#main-control{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: black;
+	font-family: "pixel", Courier, monospace;
+}
+
+#select-control{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: black;
+	font-family: "pixel", Courier, monospace;
+}
+
+.text-output{
+	position: fixed;
+	left: 50%;
+	top: 40px;
+	transform: translate(-50%, -50%);
+}
+
+#main-output{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: black;
+	font-family: "pixel", Courier, monospace;
+}

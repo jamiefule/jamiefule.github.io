@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Written by Jamie Fule -->
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environments</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="scripts/p5.min.js"></script>
+
+    <!-- Adding JQuery for convienence -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- <script src="../addons/p5.dom.min.js"></script>
+    <script src="../addons/p5.sound.min.js"></script> -->
+    <script src="scripts/sketch.js"></script>
+    <style>
+    *{
+      overflow-x:hidden;
+      overflow-y: hidden;
+      background-image: url('assets/bg/bg4.gif');
+      background-color:black;
+    }
+
+    .instructions{
+      background-color:white !important;
+      margin: auto;
+      width: 50%;
+      border: 3px solid #7442f4;
+      padding: 10px;
+      top:45%;
+      left: 25%;
+      position: absolute;
+    }
+    .instructions p{
+      background-color:white !important;
+    }
+    #btn{
+      position:absolute;
+      right: 5px;
+      bottom: 5px;
+      background-color: #7442f4;
+      color:white;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="instructions">
+      <p>
+        <p style="font-size: 30px; margin-top: 0px;">Instructions</p>
+        Use the left and right arrow keys to switch "worlds". <br>
+        Use the up and down arrow keys to switch brushes. <br>
+        There are 3 brushes per world.
+      </p>
+      <button id="btn" onClick='$(".instructions").css("visibility","hidden"); cuteSound.play();'>Okay</button>
+
+    </div>
+  </body>
+</html>
+<!--
+
+
+
+
+ -->
