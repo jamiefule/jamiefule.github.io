@@ -389,6 +389,10 @@ function draw(){
  } else{
    $(".main-content-cat").css("visibility", "hidden");
  }
+
+ if(currWorld == "main" && isHot == false){
+     $(".main-content").css("backgroundImage",'url("assets/main.png")');
+ }
 }
 
 function keyPressed() {
