@@ -1,0 +1,232 @@
+/*Written By Jamie Fule*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+background-color: #FFC2C2;
+}
+
+
+td {
+  background-color: #724620;
+  background-image: url("assets/shelf.png");
+  background-repeat: no-repeat;
+}
+
+.plant td {
+  background-color: #724620;
+  background-image: url("assets/shelf.png");
+  background-repeat: no-repeat;
+  background-size: 64px 64px;
+}
+.plant{
+  position: absolute;
+  top: 100px;
+}
+
+.plant table{
+  border: solid 1px;
+  border-color: #724620;
+  background-color: #724620;
+}
+
+table {
+  border: solid 3px;
+  border-color: #724620;
+  background-color: #724620;
+}
+
+.banner{
+  text-align: center;
+}
+
+.navigation{
+  position: absolute;
+  bottom: 0px;
+}
+
+.content{
+  text-align: center;
+  word-wrap: break-word;
+  margin: 0 auto;
+}
+
+.scrollUp{
+  position:fixed;
+  bottom: 0px;
+  right: 0px;
+}
+
+.scrollUp:hover{
+  cursor: pointer;
+}
+
+.painting{
+  position:fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.mini{
+  margin: 0;
+  width:50%;
+  position: relative;
+
+}
+
+.mini-painting{
+  position:absolute;
+  top:0px;
+  right:0px;
+}
+
+.table{
+  position:absolute;
+  bottom:0px;
+  right:0px;
+}
+
+.plants{
+  background-image:none;
+  background-color:rgba(0,0,0,0);
+  border:none;
+  text-align:center;
+  position:absolute;
+  top:0;
+  left:30%;
+}
+
+.plants td{
+background-image:none;
+background-color:rgba(0,0,0,0);
+}
+
+.free{
+  background-image: url("pictures/free.jpg");
+  width:500px;
+  height:400px;
+  position:absolute;
+  right:20px;
+  bottom:20px;
+  color:white;
+  font-size:9px;
+}
+.pill{
+  background-image: url("pictures/pill.jpg");
+  width:500px;
+  height:400px;
+  position:absolute;
+  right:150px;
+  top:20px;
+  color:white;
+  font-size:9px;
+  visibility: hidden;
+}
+.singles{
+  background-image: url("pictures/singles.jpg");
+  width:500px;
+  height:400px;
+  position:absolute;
+  left:20px;
+  bottom:10px;
+  color:white;
+  font-size:9px;
+  z-index: 100;
+  visibility: hidden;
+}
+.order{
+  bottom: 20px;
+  position: absolute;
+  font-size:30px;
+  cursor: url(assets/cursor.png), auto !important
+}
+.order:hover{
+  background-color: red;
+  cursor: url(assets/cursor.png), auto !important
+}
+.error{
+  position:absolute;
+  z-index:999999;
+  visibility: hidden;
+}
+
+/* Images for the Care page below */
+.p1{
+  background-image: url("pictures/1.png");
+  width:600px;
+  height:400px;
+}
+.p2{
+  background-image: url("pictures/2.png");
+  width:600px;
+  height:400px;
+}
+.p3{
+  background-image: url("pictures/3.png");
+  width:600px;
+  height:400px;
+}
+.p4{
+  background-image: url("pictures/4.png");
+  width:600px;
+  height:400px;
+}
+.p5{
+  background-image: url("pictures/5.png");
+  width:600px;
+  height:400px;
+}
+.p6{
+  background-image: url("pictures/6.png");
+  width:600px;
+  height:400px;
+}
+.p7{
+  background-image: url("pictures/7.png");
+  width:600px;
+  height:400px;
+}
+.p1:hover{
+  background-image: url("pictures/1-care.png");
+  width:600px;
+  height:400px;
+}
+.p2:hover{
+  background-image: url("pictures/2-care.png");
+  width:600px;
+  height:400px;
+}
+.p3:hover{
+  background-image: url("pictures/3-care.png");
+  width:600px;
+  height:400px;
+}
+.p4:hover{
+  background-image: url("pictures/4-care.png");
+  width:600px;
+  height:400px;
+}
+.p5:hover{
+  background-image: url("pictures/5-care.png");
+  width:600px;
+  height:400px;
+}
+.p6:hover{
+  background-image: url("pictures/6-care.png");
+  width:600px;
+  height:400px;
+}
+.p7:hover{
+  background-image: url("pictures/7-care.png");
+  width:600px;
+  height:400px;
+}
+
+.care-content{
+  display:flex;
+  overflow-y: scoll;
+  overflow-x: hidden;
+  padding-left: 256px;
+  padding-top: 150px;
+}

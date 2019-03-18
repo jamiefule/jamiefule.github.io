@@ -1,0 +1,61 @@
+<!-- Written by Jamie Fule -->
+<!DOCTYPE html>
+<head>
+	<title>Plant Something!</title>
+	<link href="style.css" type="text/css" rel="stylesheet"/>
+	<script type="text/javascript" src="script.js"></script>
+	<style>body{overflow:hidden;}</style> <!--I only want this for the one page so its not in the stylesheet -->
+</head>
+
+<body>
+  <div class= "mini">
+  	<div class="banner">
+  		<img src="assets/banner.png" width="155" height="75">
+  	</div>
+
+  	<div class="navigation plant">
+  		<table >
+  			<tbody>
+  				<tr>
+  					<td><a href="index.html"><img src="assets/home128.png" width="64" height="64"></a></td>
+  				</tr>
+  				<tr>
+  					<td><a href="care.html"><img src="assets/care128.png" width="64" height="64"></a></td>
+  				</tr>
+  				<tr>
+  					<td><a href="plant.html"><img src="assets/plant128.png" width="64" height="64"></a></td>
+  				</tr>
+  				<tr>
+  					<td><a href="q.html"><img src="assets/q128.png" width="64" height="64"></a></td>
+  				</tr>
+  			</tbody>
+  		</table>
+  	</div>
+
+
+    <div class="mini-painting">
+      <img src="assets/plant-painting.png" width="128" height="128">
+    </div>
+
+  	<div class="content">
+  		<img src="assets/window.png" width="300" height="200">
+  	</div>
+  </div>
+
+  <div class="table">
+    <img src="assets/table.png" style="position:relative;">
+		<table class="plants">
+			<tr>
+				<td><img id="plant1" value="1" src="assets/plant-1/1.png" height="192" width="192"></td>
+				<td><img id="plant2" value="1" src="assets/plant-2/1.png" height="192" width="192"></td>
+				<td><img id="plant3" value="1" src="assets/plant-3/1.png" height="192" width="192"></td>
+			</tr>
+			<tr>
+				<td><button onclick="plant1();">Water</button></td>
+				<td><button onclick="plant2()">Water</button></td>
+				<td><button onclick="plant3()">Water</button></td>
+			</tr>
+		</table>
+  </div>
+
+</body>

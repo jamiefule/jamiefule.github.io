@@ -1,0 +1,26 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background-color: #f7e8f2;
+}
+
+.content{
+  background-color: white;
+  text-align: center;
+  border:solid 1px;
+  border-color:#ffe2f5;
+}
+
+.pages{
+  background-color: black;
+  width:30%;
+  color:white;
+  text-align: center;
+}
+
+.pages a{
+  color:white;
+  text-decoration:none;
+}
