@@ -5,9 +5,10 @@ var isEmpty = false;
 var collected = 0;
 var currWorld = "main";
 var hasCat = false;
+var firstBasement = true;
+var firstdog = true;
+var hasDog = false;
 
-var main10 = ["table"];
-//Yes, there is a table there.
 //--------------------------------------------Key of all Commands and Corresponding text-------------------------------------------
 var commandKey = [{
   "command": "coffee",
@@ -116,6 +117,42 @@ var treeCommandKey = [
   {
     "command": "tree",
     "text": "It's a tree."
+  }
+];
+
+var lightCommandKey = [
+  {
+    "command": "light",
+    "text" : "You check out the next room to find the light switch."
+  },
+  {
+    "command": "leave",
+    "text": "You tried to leave, but it's dark and you stubbed your toe."
+  },
+  {
+    "command": "dark",
+    "text": "It's really dark. You need to find the light."
+  }
+];
+
+var darkDogCommandKey = [
+  {
+    "command": "light",
+    "text": "You found the light. Oh. It's just a puppy."
+  }
+];
+
+var lightDogCommandKey = [
+  {
+    "command": "leave",
+    "text": "You're back in the other room"
+  }
+];
+
+var lightBasementCommandKey = [
+  {
+    "command": "leave",
+    "text": "You're back upstairs"
   }
 ];
 
@@ -297,6 +334,8 @@ var mainCommands = [{
 }
 ];
 
+
+
 var outsideCommands = [
   {
     "word" : "tree",
@@ -361,7 +400,68 @@ var treeCommands = [
     "word": "exit",
     "command": "leave"
   }
-]
+];
+
+var lightCommands = [
+  {
+    "word": "light",
+    "command": "light"
+  },
+  {
+    "word": "turn on",
+    "command": "light"
+  },
+  {
+    "word": "find",
+    "command": "light"
+  },
+  {
+    "word": "leave",
+    "command": "leave"
+  },
+  {
+    "word": "back",
+    "command": "leave"
+  },
+  {
+    "word": "exit",
+    "command": "leave"
+  },
+  {
+    "word": "upstairs",
+    "command": "leave"
+  },
+  {
+    "word": "stairs",
+    "command": "leave"
+  },
+  {
+    "word": "dark",
+    "command": "dark"
+  }
+];
+
+var darkDogCommands = [
+  {
+    "word": "light",
+    "command" :  "light"
+  }
+];
+
+var lightDogCommands = [
+  {
+    "word": "leave",
+    "command" :  "leave"
+  }
+];
+
+var lightBasementgCommands = [
+  {
+    "word": "leave",
+    "command" :  "leave"
+  }
+];
+
 function setup() {
 
 }
@@ -390,8 +490,28 @@ function draw(){
    $(".main-content-cat").css("visibility", "hidden");
  }
 
- if(currWorld == "main" && isHot == false){
+ if(currWorld == "main" && isHot == false && isEmpty == false){
      $(".main-content").css("backgroundImage",'url("assets/main.png")');
+ }
+ if(currWorld == "main" && isEmpty == true){
+   $(".main-content").css("backgroundImage",'url("assets/room-coffee-empty.png")');
+ }
+ if(currWorld == "main" && isEmpty == true && hasCat == true && hasDog == false){
+   $("#main-output").text("Hmm, you heard something downstairs... Maybe you should go down there.");
+   $(".text-input").css("visibility", "hidden");
+   $(".basement-input").css("visibility", "visible");
+ }
+ if(currWorld == 'basement' && firstBasement == true){
+   firstBasement = false;
+   $("#main-output").text("It's dark, you should look for a light switch.");
+   $(".main-content").css("backgroundImage", 'url("assets/basement-1.png")');
+   $(".text-input").css("visibility", "visible");
+   $(".basement-input").css("visibility", "hidden");
+ }
+ if(currWorld == "darkDog" && firstdog == true){
+   firstdog == false;
+   $("#main-output").text("You check out the next room to find the light switch.");
+
  }
 }
 
@@ -405,6 +525,18 @@ function keyPressed() {
     }
     if(currWorld == "tree"){
       checkTreeInput();
+    }
+    if(currWorld == "basement"){
+      checkBasementInput();
+    }
+    if(currWorld == "darkDog"){
+      checkDarkDogInput();
+    }
+    if(currWorld == "lightDog"){
+      checkLightDogInput();
+    }
+    if(currWorld == "lightBasement"){
+      checkLightBasementInput();
     }
   }
 }
@@ -435,13 +567,14 @@ function checkInput(){
             isEmpty = true;
             collected++;
             $("#main-control").val("");
-            $(".main-content").css("backgroundImage", 'url("assets/room-coffee-empty.png")');
             $(".award-1").css("visibility", "visible");
             return;
           }
           if(isHot == false && isEmpty == false){
-            $("#main-output").text("YOU DRANK COLD COFFEE. DISGUSTING. GAME OVER.");
+            $("#main-output").text("YOU DRANK COLD COFFEE. N A S T Y. GAME OVER.");
             $("#main-control").val("");
+            $(".reset-input").css("visibility", "visible");
+            $(".text-input").css("visibility", "hidden");
             return;
           }
           $("#main-output").text(commandKey[i].text);
@@ -454,7 +587,7 @@ function checkInput(){
         }
         if(command == "cat"){
           if(hasCat == true){
-            $("#main-output").text(commandKey[i].text);
+            $("#main-o                                       utput").text(commandKey[i].text);
             return;
           } else{
             $("#main-output").text("Having a cat would be cool.");
@@ -538,3 +671,107 @@ function checkTreeInput(){
   }
   $("#main-control").val("");
 }
+
+
+function checkBasementInput(){
+  var found = false;
+  var input = $("#main-control").val();
+  for(var i = 0; i < lightCommands.length; i++){
+    if(input.includes(lightCommands[i].word)){
+      var command = lightCommands[i].command;
+      found = true;
+        $("#main-control").val("");
+    }
+  }
+  if(found == false){
+    $("#main-output").text("I don't know what that means, stop trying to be funny.");
+  }else{
+    for(var i = 0;i < lightCommandKey.length; i++){
+      if(command == lightCommandKey[i].command){
+        if(command == "light"){
+          currWorld = "darkDog";
+          $(".main-content").css("backgroundImage", 'url("assets/eyes.png")');
+        }
+        $("#main-output").text(lightCommandKey[i].text);
+      }
+    }
+  }
+  $("#main-control").val("");
+}
+
+function checkDarkDogInput(){
+    var found = false;
+    var input = $("#main-control").val();
+    for(var i = 0; i < darkDogCommands.length; i++){
+      if(input.includes(darkDogCommands[i].word)){
+        var command = darkDogCommands[i].command;
+        found = true;
+          $("#main-control").val("");
+      }
+    }
+    if(found == false){
+      $("#main-output").text("I don't know what that means, stop trying to be funny.");
+    }else{
+      for(var i = 0;i < darkDogCommandKey.length; i++){
+        if(command == darkDogCommandKey[i].command){
+          if(command == "light"){
+            currWorld = "lightDog";
+            $(".main-content").css("backgroundImage", 'url("assets/basement-dog.png")');
+          }
+          $("#main-output").text(darkDogCommandKey[i].text);
+        }
+      }
+    }
+    $("#main-control").val("");
+  }
+
+  function checkLightDogInput(){
+      var found = false;
+      var input = $("#main-control").val();
+      for(var i = 0; i < lightDogCommands.length; i++){
+        if(input.includes(lightDogCommands[i].word)){
+          var command = lightDogCommands[i].command;
+          found = true;
+            $("#main-control").val("");
+        }
+      }
+      if(found == false){
+        $("#main-output").text("I don't know what that means, stop trying to be funny.");
+      }else{
+        for(var i = 0;i < lightDogCommandKey.length; i++){
+          if(command == lightDogCommandKey[i].command){
+            if(command == "leave"){
+              currWorld = "lightBasement";
+              $(".main-content").css("backgroundImage", 'url("assets/basement-2.png")');
+            }
+            $("#main-output").text(lightDogCommandKey[i].text);
+          }
+        }
+      }
+      $("#main-control").val("");
+    }
+
+    function checkLightBasementInput(){
+        var found = false;
+        var input = $("#main-control").val();
+        for(var i = 0; i < lightDogCommands.length; i++){
+          if(input.includes(lightDogCommands[i].word)){
+            var command = lightDogCommands[i].command;
+            found = true;
+              $("#main-control").val("");
+          }
+        }
+        if(found == false){
+          $("#main-output").text("I don't know what that means, stop trying to be funny.");
+        }else{
+          for(var i = 0;i < lightDogCommandKey.length; i++){
+            if(command == lightDogCommandKey[i].command){
+              if(command == "leave"){
+                currWorld = "main";
+              }
+              $("#main-output").text(lightDogCommandKey[i].text);
+            }
+          }
+        }
+        $("#main-control").val("");
+      }

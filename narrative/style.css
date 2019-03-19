@@ -109,6 +109,26 @@ z-index:100;
 		font-family: "pixel", Courier, monospace;
 
 }
+.reset-input{
+		visibility: hidden;
+		position: fixed;
+	  left: 50%;
+	  bottom: 0px;
+	  transform: translate(-50%, -50%);
+		color:white;
+		font-size:40px;
+		font-family: "pixel", Courier, monospace;
+}
+.basement-input{
+		visibility: hidden;
+		position: fixed;
+	  left: 50%;
+	  bottom: 0px;
+	  transform: translate(-50%, -50%);
+		color:white;
+		font-size:40px;
+		font-family: "pixel", Courier, monospace;
+}
 
 @font-face{
 	font-family: 'pixel';
@@ -130,7 +150,20 @@ z-index:100;
 	border-color: black;
 	font-family: "pixel", Courier, monospace;
 }
-
+#reset-control{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: white;
+	font-family: "pixel", Courier, monospace;
+}
+#basement-control{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: white;
+	font-family: "pixel", Courier, monospace;
+}
 .text-output{
 	position: fixed;
 	left: 50%;
