@@ -678,7 +678,7 @@ function draw(){
    $("#main-output").text("You win! You collected all 3 items necessary for a perfect life!");
  }
  if(currWorld == "main" && hasDog == true && hasCat == true && isEmpty == true){
-   $("#main-output").text("You feel like you've accomplished a lot today. I think it's time to sleep.");
+   $("#main-output").text("You feel like you've accomplished a lot today. It's about time to get some sleep.");
    $(".sleep-input").css("visibility", "visible");
    $(".text-input").css("visibility", "hidden");
 
