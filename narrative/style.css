@@ -62,6 +62,37 @@ body {
     width: 800px;
     height: 600px;
 }
+
+.main-content-dog{
+	background-image: url("assets/dog.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	visibility: hidden;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+		z-index:100;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+.last-screen{
+	background-image: url("assets/sleep.png");
+	background-repeat: no-repeat;
+	position: absolute;
+	visibility: hidden;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+		z-index:1000;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
 .award-1{
 background-image:url("assets/coffee-award.png");
 position:absolute;
@@ -129,7 +160,16 @@ z-index:100;
 		font-size:40px;
 		font-family: "pixel", Courier, monospace;
 }
-
+.sleep-input{
+		visibility: hidden;
+		position: fixed;
+	  left: 50%;
+	  bottom: 0px;
+	  transform: translate(-50%, -50%);
+		color:white;
+		font-size:40px;
+		font-family: "pixel", Courier, monospace;
+}
 @font-face{
 	font-family: 'pixel';
 	src: url('assets/advanced_pixel-7.ttf');
@@ -151,6 +191,13 @@ z-index:100;
 	font-family: "pixel", Courier, monospace;
 }
 #reset-control{
+	background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: white;
+	font-family: "pixel", Courier, monospace;
+}
+#sleep-control{
 	background-color:black;
 	color: white;
 	font-size:40px;

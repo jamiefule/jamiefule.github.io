@@ -8,7 +8,20 @@ var hasCat = false;
 var firstBasement = true;
 var firstdog = true;
 var hasDog = false;
+var lightDog = true;
+var lightBasement = true;
 
+var isPlaying = false;
+var audio = new Audio('assets/bgm.mp3');
+var audioBasement = new Audio('assets/scary.mp3');
+
+
+$(document).on("click", function(){
+  if(isPlaying == false){
+    isPlaying = true;
+    audio.play();
+  }
+});
 //--------------------------------------------Key of all Commands and Corresponding text-------------------------------------------
 var commandKey = [{
   "command": "coffee",
@@ -98,6 +111,10 @@ var commandKey = [{
    {
      "command": "grass",
      "text": "There's nothing interesting about the grass"
+   },
+   {
+     "command": "leave",
+     "text": "Leave? You just got here!"
    }
  ];
 
@@ -138,7 +155,19 @@ var lightCommandKey = [
 var darkDogCommandKey = [
   {
     "command": "light",
-    "text": "You found the light. Oh. It's just a puppy."
+    "text": "You found the light."
+  },
+  {
+    "command": "run",
+    "text": "Running seems like a bad idea..."
+  },
+  {
+    "command": "attack",
+    "text": "I don't think this is a fight you can win. Just look for the light switch."
+  },
+  {
+    "command": "monster",
+    "text": "Yeah this definitely looks bad."
   }
 ];
 
@@ -146,6 +175,22 @@ var lightDogCommandKey = [
   {
     "command": "leave",
     "text": "You're back in the other room"
+  },
+  {
+    "command": "dog",
+    "text": "Hey! You found a puppy! Nothing scary about that!"
+  },
+  {
+    "command": "cactus",
+    "text": "It's a little painting of a cactus. Really cute."
+  },
+  {
+    "command": "sock",
+    "text": "A lonely sock. Looks like the dog has been chewing on it."
+  },
+  {
+    "command": "light",
+    "text": "The light is back on."
   }
 ];
 
@@ -153,6 +198,14 @@ var lightBasementCommandKey = [
   {
     "command": "leave",
     "text": "You're back upstairs"
+  },
+  {
+    "command": "sock",
+    "text": "Another sock... Looks like this one's been chewed up a bit."
+  },
+  {
+    "command": "light",
+    "text": "The light is back on."
   }
 ];
 
@@ -373,6 +426,18 @@ var outsideCommands = [
     "word": "grass",
     "command": "grass"
   },
+  {
+    "word": "back",
+    "command": "leave"
+  },
+  {
+    "word": "leave",
+    "command": "leave"
+  },
+  {
+    "word": "go in",
+    "command": "leave"
+  }
 ];
 
 var treeCommands = [
@@ -445,6 +510,38 @@ var darkDogCommands = [
   {
     "word": "light",
     "command" :  "light"
+  },
+  {
+    "word": "escape",
+    "command" : "run"
+  },
+  {
+    "word": "run",
+    "command" : "run"
+  },
+  {
+    "word": "flee",
+    "command" : "run"
+  },
+  {
+    "word": "attack",
+    "command" : "attack"
+  },
+  {
+    "word": "fight",
+    "command" : "attack"
+  },
+  {
+    "word": "hit",
+    "command" : "attack"
+  },
+  {
+    "word": "monster",
+    "command" : "monster"
+  },
+  {
+    "word": "evil",
+    "command" : "monster"
   }
 ];
 
@@ -452,13 +549,65 @@ var lightDogCommands = [
   {
     "word": "leave",
     "command" :  "leave"
+  },
+  {
+    "word": "back",
+    "command": "leave"
+  },
+  {
+    "word": "exit",
+    "command": "leave"
+  },
+  {
+    "word": "dog",
+    "command": "dog"
+  },
+  {
+    "word": "painting",
+    "command": "cactus"
+  },
+  {
+    "word": "picture",
+    "command": "cactus"
+  },
+  {
+    "word": "cactus",
+    "command": "cactus"
+  },
+  {
+    "word": "sock",
+    "command": "sock"
+  },
+  {
+    "word": "light",
+    "command": "light"
   }
 ];
 
-var lightBasementgCommands = [
+var lightBasementCommands = [
   {
     "word": "leave",
     "command" :  "leave"
+  },
+  {
+    "word": "back",
+    "command": "leave"
+  },
+  {
+    "word": "stairs",
+    "command": "leave"
+  },
+  {
+    "word": "exit",
+    "command": "leave"
+  },
+  {
+    "word": "light",
+    "command": "light"
+  },
+  {
+    "word": "sock",
+    "command": "sock"
   }
 ];
 
@@ -507,16 +656,37 @@ function draw(){
    $(".main-content").css("backgroundImage", 'url("assets/basement-1.png")');
    $(".text-input").css("visibility", "visible");
    $(".basement-input").css("visibility", "hidden");
+   audio.pause();
+   audioBasement.play();
  }
  if(currWorld == "darkDog" && firstdog == true){
-   firstdog == false;
+   firstdog = false;
    $("#main-output").text("You check out the next room to find the light switch.");
+ }
+ if(currWorld == "lightDog" && lightDog == true){
+   lightDog = false;
+   $("#main-output").text("You found the light.");
+ }
+ if(currWorld == "lightBasement" && lightBasement == true){
+   lightBasement = false;
+   $("#main-output").text("You're back in the other room.");
+ }
+ if(currWorld == "sleep"){
+   $(".last-screen").css("visibility", "visible");
+   $(".sleep-input").css("visibility", "hidden");
+   $(".reset-input").css("visibility", "visible");
+   $("#main-output").text("You win! You collected all 3 items necessary for a perfect life!");
+ }
+ if(currWorld == "main" && hasDog == true && hasCat == true && isEmpty == true){
+   $("#main-output").text("You feel like you've accomplished a lot today. I think it's time to sleep.");
+   $(".sleep-input").css("visibility", "visible");
+   $(".text-input").css("visibility", "hidden");
 
  }
 }
 
 function keyPressed() {
-  if(keyCode === ENTER){
+  if(keyCode === ENTER && $("#main-control").val() != ""){
     if(currWorld == "main"){
       checkInput();
     }
@@ -587,7 +757,7 @@ function checkInput(){
         }
         if(command == "cat"){
           if(hasCat == true){
-            $("#main-o                                       utput").text(commandKey[i].text);
+            $("#main-output").text(commandKey[i].text);
             return;
           } else{
             $("#main-output").text("Having a cat would be cool.");
@@ -716,6 +886,10 @@ function checkDarkDogInput(){
         if(command == darkDogCommandKey[i].command){
           if(command == "light"){
             currWorld = "lightDog";
+            audioBasement.pause();
+            audio.play();
+            hasDog = true;
+            $(".award-3").css("visibility", 'visible');
             $(".main-content").css("backgroundImage", 'url("assets/basement-dog.png")');
           }
           $("#main-output").text(darkDogCommandKey[i].text);
@@ -741,8 +915,11 @@ function checkDarkDogInput(){
         for(var i = 0;i < lightDogCommandKey.length; i++){
           if(command == lightDogCommandKey[i].command){
             if(command == "leave"){
+              $("#main-control").val("");
               currWorld = "lightBasement";
               $(".main-content").css("backgroundImage", 'url("assets/basement-2.png")');
+            }
+            if(command == "dog"){
             }
             $("#main-output").text(lightDogCommandKey[i].text);
           }
@@ -754,22 +931,24 @@ function checkDarkDogInput(){
     function checkLightBasementInput(){
         var found = false;
         var input = $("#main-control").val();
-        for(var i = 0; i < lightDogCommands.length; i++){
-          if(input.includes(lightDogCommands[i].word)){
-            var command = lightDogCommands[i].command;
+        for(var i = 0; i < lightBasementCommands.length; i++){
+          if(input.includes(lightBasementCommands[i].word)){
+            var command = lightBasementCommands[i].command;
             found = true;
               $("#main-control").val("");
           }
         }
         if(found == false){
-          $("#main-output").text("I don't know what that means, stop trying to be funny.");
+          $("#main-output").text("I don't know what that means, maybe you should just go upstairs.");
         }else{
-          for(var i = 0;i < lightDogCommandKey.length; i++){
-            if(command == lightDogCommandKey[i].command){
+          for(var i = 0;i < lightBasementCommandKey.length; i++){
+            if(command == lightBasementCommandKey[i].command){
               if(command == "leave"){
+                $("#main-control").val("");
                 currWorld = "main";
+                $(".main-content-dog").css("visibility", "visible");
               }
-              $("#main-output").text(lightDogCommandKey[i].text);
+              $("#main-output").text(lightBasementCommandKey[i].text);
             }
           }
         }
