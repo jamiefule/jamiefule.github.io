@@ -6,6 +6,10 @@ body{
   font-family: 'witched';
   src: url('assets/witches_magic/Witches Magic.ttf');
 }
+@font-face {
+  font-family: 'runes';
+  src: url('assets/RUNE.TTF');
+}
 
 #title{
 text-align:center;
@@ -63,4 +67,24 @@ color: white;
 font-size:30px;
 border-color: white;
 font-family: 'witched';
+}
+#runes-left{
+  color: white;
+  font-family: "runes";
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  position:absolute;
+  bottom:20;
+  font-size:30px;
+  left:20;
+}
+#runes-right{
+  color: white;
+  font-family: "runes";
+  text-orientation: upright;
+  writing-mode: vertical-rl;
+  position:absolute;
+  top:20;
+  font-size:30px;
+  right:20;
 }
