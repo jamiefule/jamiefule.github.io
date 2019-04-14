@@ -1,0 +1,66 @@
+body{
+  background-color: black;
+}
+
+@font-face {
+  font-family: 'witched';
+  src: url('assets/witches_magic/Witches Magic.ttf');
+}
+
+#title{
+text-align:center;
+width:100%;
+font-size:60px;
+color:white;
+font-family: 'witched';
+}
+
+#credits{
+  font-size: 10px;
+  color:white;
+  position:absolute;
+  right: 0px;
+  bottom: 0px;
+}
+
+#content-border{
+	background-color: white;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 840px;
+    height: 640px;
+}
+#content{
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+    z-index:2;
+}
+#window{
+  z-index: 1;
+	position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 800px;
+    height: 600px;
+}
+
+#believe{
+  background-color:black;
+color: white;
+font-size:30px;
+border-color: white;
+font-family: 'witched';
+}
