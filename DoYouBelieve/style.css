@@ -28,7 +28,7 @@ font-family: 'witched';
 }
 
 #content-border{
-	background-color: white;
+	background-color: black;
 	position: absolute;
     top:0;
     bottom: 0;
@@ -69,6 +69,7 @@ border-color: white;
 font-family: 'witched';
 }
 #runes-left{
+  visibility: hidden;
   color: white;
   font-family: "runes";
   text-orientation: upright;
@@ -79,6 +80,7 @@ font-family: 'witched';
   left:20;
 }
 #runes-right{
+  visibility: hidden;
   color: white;
   font-family: "runes";
   text-orientation: upright;
