@@ -5,7 +5,7 @@ $(document).ready(function() {
     if($("#believe").val() == "yes"){
       $("#content-border").css("backgroundColor","white");
       believe = true;
-      $("#content").css("backgroundImage", "url('assets/yes-room-empty.png')");
+      $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
       $("#window").css("backgroundImage", "url('assets/yes-window.png')");
     }
     else{
