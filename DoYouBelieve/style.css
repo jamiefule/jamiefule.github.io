@@ -18,6 +18,10 @@ font-size:60px;
 color:white;
 font-family: 'witched';
 }
+#title-content{
+  text-align:center;
+  height :100%;
+}
 
 #credits{
   font-size: 10px;
@@ -63,11 +67,34 @@ font-family: 'witched';
 
 #believe{
   background-color:black;
+  color: white;
+  font-size:30px;
+  border-color: white;
+  font-family: 'witched';
+}
+#start{
+  background-color:black;
+	color: white;
+	font-size:40px;
+	border-color: white;
+  font-family: 'witched';
+}
+#month{
+  background-color:black;
 color: white;
 font-size:30px;
 border-color: white;
 font-family: 'witched';
 }
+
+#date{
+  background-color:black;
+color: white;
+font-size:30px;
+border-color: white;
+font-family: 'witched';
+}
+
 #runes-left{
   visibility: hidden;
   color: white;
