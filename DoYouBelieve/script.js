@@ -4,6 +4,12 @@ var useChart;
 var sign;
 var horoscope;
 var moonSign;
+var shake = false;
+var firstShake = true;
+var gaze = false;
+var rand;
+var card = false;
+var tarot = false;
 //array if sun signs
 var firstSigns = {
   'aries': '+',
@@ -76,6 +82,7 @@ $(document).ready(function() {
     $("#window").css("display","block");
 
 
+
     //get sign
     if ($("#month").val() == 1 && $("#date").val() >=20 || $("#month").val() == 2 && $("#date").val() <=18)
       sign = "aquarius";
@@ -111,6 +118,14 @@ $(document).ready(function() {
   });
 
   $("#believe").on("click", function(){
+    shake = false;
+    gaze = false;
+    firstShake = true;
+    $("#ball").text("ball");
+    $("#cards").text("cards");
+    $("#ball").css("visibility","visible");
+    $("#cards").css("visibility","visible");
+
     if($("#believe").val() == "yes"){
       $("#content-border").css("backgroundColor","white");
       believe = true;
@@ -154,6 +169,88 @@ $.ajax({
         alert("Request: "+JSON.stringify(request));
     }
 });
+$("#cards").on("click", function(){
+  if(card == true){
+    $("#content").css("backgroundImage", "url('assets/no-room-full.png')");
+    $("#ball").css("visibility", "visible");
+    $("#ball").text("ball");
+    $("#cards").text("cards");
+    card = false;
+    return;
+  }
+  if(tarot == true){
+    $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
+    $("#ball").css("visibility", "visible");
+    $("#ball").text("ball");
+    $("#cards").text("cards");
+    tarot = false;
+    return;
+  }
+  if(shake == true){
+    shake = false;
+    firstShake = true;
+    $("#ball").text("ball");
+    $("#cards").text("cards");
+    $("#content").css("backgroundImage", "url('assets/no-room-full.png')");
+    return;
+  }
+  if(gaze == true){
+    gaze = false;
+    $("#ball").text("ball");
+    $("#cards").text("cards");
+    $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
+    return;
+  }
+  if(believe == true){
+    $("#content").css("backgroundImage", "url('assets/TBD')");
+    tarot = true;
+  }
+  if(believe == false){
+    $("#content").css("backgroundImage", "url('assets/cards.png')");
+    card = true;
+    $("#ball").css("visibility", "hidden");
+    $("#cards").text("back");
+
+  }
+});
+
+$("#ball").on("click", function(){
+
+  if(believe == true){
+    $("#content").css("backgroundImage", "url('assets/crystal-ball.gif')");
+    $("#ball").text("gaze");
+    $("#cards").text("back");
+    gaze = true;
+  }
+  if(believe == false){
+    $("#content").css("backgroundImage", "url('assets/8ball/shake.png')");
+    shake = true;
+    $("#ball").text("shake");
+    $("#cards").text("back");
+  }
+
+  if(shake == true){
+    rand = Math.floor(Math.random()*5);
+    if(firstShake != true){
+      if(rand == 0)
+      $("#content").css("backgroundImage", "url('assets/8ball/no.png')");
+
+      if(rand == 1)
+      $("#content").css("backgroundImage", "url('assets/8ball/yes.png')");
+
+      if(rand == 2)
+      $("#content").css("backgroundImage", "url('assets/8ball/idk.png')");
+
+      if(rand == 3)
+      $("#content").css("backgroundImage", "url('assets/8ball/maybe.png')");
+
+      if(rand == 4)
+      $("#content").css("backgroundImage", "url('assets/8ball/later.png')");
+    }
+    firstShake = false;
+  }
+});
+
 });
 
 function startHoroscope(){

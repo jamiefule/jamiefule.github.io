@@ -14,7 +14,7 @@ body{
 #input{
   position: fixed;
   left: 50%;
-  bottom: 0px;
+  bottom: 10px;
   transform: translate(-50%, -50%);
   display: inline-block;
 }
@@ -28,7 +28,6 @@ font-family: 'witched';
 }
 #title-content{
   text-align:center;
-  height :100%;
 }
 
 #credits{
@@ -103,21 +102,23 @@ border-color: white;
 font-family: 'witched';
 }
 #ball{
-  background-color:black;
+visibility: hidden;
+background-color:black;
 color: white;
 font-size:30px;
 border-color: white;
 font-family: 'witched';
-position: absolute;
-bottom:0;
+
+
 }
 #cards{
-  background-color:black;
+visibility: hidden;
+background-color:black;
 color: white;
 font-size:30px;
 border-color: white;
 font-family: 'witched';
-position: absolute;
+
 }
 
 #runes-left{
