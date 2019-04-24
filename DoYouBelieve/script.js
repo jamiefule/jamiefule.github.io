@@ -108,7 +108,6 @@ $(document).ready(function() {
       useChart = secondSigns;
 
     console.log(sign);
-    horoscope = useChart[moonSign];
   });
 
   $("#believe").on("click", function(){
@@ -157,6 +156,10 @@ $.ajax({
 });
 });
 
+function startHoroscope(){
+  horoscope = useChart[moonSign];
+  getHoroscope();
+}
 
 function getHoroscope(){
   var horoscopeText;
