@@ -11,6 +11,14 @@ body{
   src: url('assets/RUNE.TTF');
 }
 
+#input{
+  position: fixed;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+}
+
 #title{
 text-align:center;
 width:100%;
@@ -93,6 +101,23 @@ color: white;
 font-size:30px;
 border-color: white;
 font-family: 'witched';
+}
+#ball{
+  background-color:black;
+color: white;
+font-size:30px;
+border-color: white;
+font-family: 'witched';
+position: absolute;
+bottom:0;
+}
+#cards{
+  background-color:black;
+color: white;
+font-size:30px;
+border-color: white;
+font-family: 'witched';
+position: absolute;
 }
 
 #runes-left{
