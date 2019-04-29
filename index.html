@@ -1,32 +1,65 @@
-<!DOCTYPE html>
-<!-- WIP Page, expect it to look bad -->
-<head>
-<title>Jamie Fule's Github</title>
-<link rel="stylesheet" href="scripts/style.css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-</head>
-<body>
-<h1>Jamie Fule's Github</h1>
-  <div class="content">
-    <p>Hello, this page is a work in progress to showcase my personal projects ~Jamie</p>
-  </div>
-  <br>
-  <div class="pages">
-      <a href="plantFanPage/index.html">Plant Fan Page </a>
-  </div>
-  <br>
-  <div class="pages">
-      <a href="environments/index.html">Interactive Environments </a>
-  </div>
-  <br>
-  <div class="pages">
-      <a href="narrative/index.html">Narrative </a>
-  </div>
-  <br>
-  <div class="pages">
-      <a href="DoYouBelieve/index.html">Final Project </a>
-  </div>
-  <br>
+<html>
+	<head>
+		<title>Do You Believe?</title>
+		<link rel="stylesheet" href="style.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="script.js"></script>
+	</head>
+
+	<body>
+		<div id="title-content">
+			<a id="title">What Day Were You Born?</a>
+			<select id="believe">
+				<option value="" selected disabled>???</option>
+				<option value="yes">yes</option>
+				<option value="no">no.</option>
+			</select>
+			<br>
+			<select id="month">
+					<option value ='1'>January</option>
+					<option value ='2'>February</option>
+					<option value ='3'>March</option>
+					<option value ='4'>April</option>
+					<option value ='5'>May</option>
+					<option value ='6'>June</option>
+					<option value ='7'>July</option>
+					<option value ='8'>August</option>
+					<option value ='9'>September</option>
+					<option value ='10'>October</option>
+					<option value ='11'>November</option>
+					<option value ='12'>December</option>
+			</select>
+			<br> <br>
+			<select id='date'>
+				<option ='1'>1</option>
+			</select>
+			<br><br>
+			<button id="start">Begin</button>
+	</div>
+
+	<div id="content-border">
+			<div id="tarot-card"></div>
+			<div id="horoscope-text"></div>
+			<div id="tarot-text"></div>
+			<div id="tarot-title"></div>
 
 
-</body>
+	</div>
+	<div id="runes-left">
+		MAGIC IS REAL
+	</div>
+	<div id="runes-right">
+		BELIEVE IN MAGIC
+	</div>
+	<div id="content">
+
+	</div>
+	<div id="input">
+	<button id="ball">ball</button>
+	<button id="cards">cards</button>
+</div>
+		<a id="credits" href="https://society6.com/menagerieofmasks">Tarot Card Artist</a>
+
+
+	</body>
+</html>
