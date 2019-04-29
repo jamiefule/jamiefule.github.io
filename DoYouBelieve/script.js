@@ -38,7 +38,7 @@ var majorArcana = [
   {
     'card': 'The Emperor',
     'image' : 'assets/tarot/emperor.png',
-    'description': "It's time for some more disciple in your life. You need to focus on creating a more stable environment."
+    'description': "It's time for some more discipline in your life. You need to focus on creating a more stable environment."
   },
   {
     'card': 'The Fool' ,
