@@ -10,6 +10,118 @@ var gaze = false;
 var rand;
 var card = false;
 var tarot = false;
+var noAudio = new Audio('assets/EasyLemon.mp3');
+var yesAudio = new Audio('assets/MistyMire.mp3');
+
+
+var majorArcana = [
+  {
+    'card': 'The Chariot',
+    'image' : 'assets/tarot/chariot.png',
+    'description': 'With a bit of confidence, success will be coming your way.'
+  },
+  {
+    'card': 'Death',
+    'image' : 'assets/tarot/death.png',
+    'description': 'All good things come to and end, it is time for a transition.'
+  },
+  {
+    'card': 'The Devil',
+    'image' : 'assets/tarot/devil.png',
+    'description': 'It seems that may you have been indulging a bit too much and may have a few addictions you need to let go of. Please take care of yourself.'
+  },
+  {
+    'card': 'The Empress',
+    'image' : 'assets/tarot/empress.png',
+    'description': 'Now is a great time to focus on making something new. Get in touch with your creative side.'
+  },
+  {
+    'card': 'The Emperor',
+    'image' : 'assets/tarot/emperor.png',
+    'description': "It's time for some more disciple in your life. You need to focus on creating a more stable environment."
+  },
+  {
+    'card': 'The Fool' ,
+    'image' : 'assets/tarot/fool.png',
+    'description':'Trust in yourself. Go with your natural instincts, they will lead you to success.'
+  },
+  {
+    'card': 'The Hanged Man',
+    'image' : 'assets/tarot/hanged.png',
+    'description': 'Looking at things in a new perspective is important to do at this time.'
+  },
+  {
+    'card': 'The Heirophant',
+    'image' : 'assets/tarot/heirophant.png',
+    'description': "It may be time to look to a more traditional outlook on things. Sometimes looking to the old can inspire something new."
+  },
+  {
+    'card': 'The Hermit',
+    'image' : 'assets/tarot/hermit.png',
+    'description':'You are due for some much needed introspection. Reflect on where you are in life, and make sure you are on track.'
+  },
+  {
+    'card': 'Judgement',
+    'image' : 'assets/tarot/judgement.png',
+    'description': "It's time to forgive yourself, and allow yourself to grow."
+  },
+  {
+    'card': 'Justice',
+    'image' : 'assets/tarot/justice.png',
+    'description': 'Fairness will prevail, look out for hurt feelings during this time.'
+  },
+  {
+    'card': 'The Lovers',
+    'image' : 'assets/tarot/lovers.png',
+    'description': 'Indulge in your passions, it is time to listen to your heart.'
+  },
+  {
+    'card': 'The Magician',
+    'image' : 'assets/tarot/magician.png',
+    'description':'Go after your greatest achievements, you have the power and intellect to do so at this time.'
+  },
+  {
+    'card': 'The Moon',
+    'image' : 'assets/tarot/moon.png',
+    'description': 'Many good things can seem real, but are merely an illusion. Think about who may be decieving you at this time.'
+  },
+  {
+    'card': 'The High Priestess',
+    'image' : 'assets/tarot/priestess.png',
+    'description': 'Reflect on all your options, and then go with your intuition. You can trust your own stability.'
+  },
+  {
+    'card': 'The Star',
+    'image' : 'assets/tarot/star.png',
+    'description': 'Listen to your dreams to help guide you. It is time to renew your passions.'
+  },
+  {
+    'card': 'Strength',
+    'image' : 'assets/tarot/strength.png',
+    'description': 'It may be wise to take a calm and compassionate approach to your life at this time.'
+  },
+  {
+    'card': 'The Sun',
+    'image' : 'assets/tarot/sun.png',
+    'description': 'You are due for some happiness and a refreshing outlook on life.'
+  },
+  {
+    'card': 'Temperance',
+    'image' : 'assets/tarot/temperance.png',
+    'description': 'Balance in life is a necessity at this time, please be mindful of that.'
+  },
+  {
+    'card': 'The Tower',
+    'image' : 'assets/tarot/tower.png',
+    'description': 'Something seems to be collapsing in your life. Change can be good, and a release of things can help propel you in the future.'
+  },
+  {
+    'card': 'The Wheel of Fortune',
+    'image' : 'assets/tarot/wheel.png',
+    'description': 'Things might be changing soon, it looks like you are in for some good luck.'
+  }
+];
+
 //array if sun signs
 var firstSigns = {
   'aries': '+',
@@ -47,7 +159,6 @@ $(document).ready(function() {
   $("#believe").css("visibility","hidden");
   $("#content-border").css("display","none");
   $("#content").css("display","none");
-  $("#window").css("display","none");
 
 
   //initial loading of dropdown just in case
@@ -79,7 +190,6 @@ $(document).ready(function() {
     $("#believe").css("visibility","visible");
     $("#content-border").css("display","block");
     $("#content").css("display","block");
-    $("#window").css("display","block");
 
 
 
@@ -125,18 +235,24 @@ $(document).ready(function() {
     $("#cards").text("cards");
     $("#ball").css("visibility","visible");
     $("#cards").css("visibility","visible");
+    $("#tarot-text").css("visibility","hidden");
+    $("#tarot-card").css("visibility","hidden");
+    $("#tarot-title").css("visibility", "hidden");
 
     if($("#believe").val() == "yes"){
       $("#content-border").css("backgroundColor","white");
       believe = true;
-      $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
-      $("#window").css("backgroundImage", "url('assets/yes-window.png')");
+      $("#content").css("backgroundImage", "url('assets/yes-room-full.gif')");
+      noAudio.pause();
+      yesAudio.play();
     }
     else{
+      $("#horoscope-text").css("visibility", "hidden");
       $("#content-border").css("backgroundColor","white");
       believe = false;
-      $("#content").css("backgroundImage", "url('assets/no-room-full.png')");
-      $("#window").css("backgroundImage", "url('assets/no-window.png')");
+      $("#content").css("backgroundImage", "url('assets/no-room-full.gif')");
+      yesAudio.pause();
+      noAudio.play();
     }
   });
 
@@ -166,12 +282,17 @@ $.ajax({
     },
     error : function(request,error)
     {
-        alert("Request: "+JSON.stringify(request));
+        alert("Please click the shield icon in your url bar and click 'load unsafe scripts' (It's safe don't worry)");
     }
 });
 $("#cards").on("click", function(){
+  $("#horoscope-text").css("visibility", "hidden");
+  $("#tarot-text").css("visibility","hidden");
+  $("#tarot-card").css("visibility","hidden");
+  $("#tarot-title").css("visibility", "hidden");
+
   if(card == true){
-    $("#content").css("backgroundImage", "url('assets/no-room-full.png')");
+    $("#content").css("backgroundImage", "url('assets/no-room-full.gif')");
     $("#ball").css("visibility", "visible");
     $("#ball").text("ball");
     $("#cards").text("cards");
@@ -179,8 +300,9 @@ $("#cards").on("click", function(){
     return;
   }
   if(tarot == true){
-    $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
+    $("#content").css("backgroundImage", "url('assets/yes-room-full.gif')");
     $("#ball").css("visibility", "visible");
+    $("#tarot-text").css("visibility","hidden");
     $("#ball").text("ball");
     $("#cards").text("cards");
     tarot = false;
@@ -191,18 +313,23 @@ $("#cards").on("click", function(){
     firstShake = true;
     $("#ball").text("ball");
     $("#cards").text("cards");
-    $("#content").css("backgroundImage", "url('assets/no-room-full.png')");
+    $("#content").css("backgroundImage", "url('assets/no-room-full.gif')");
     return;
   }
+
   if(gaze == true){
     gaze = false;
     $("#ball").text("ball");
     $("#cards").text("cards");
-    $("#content").css("backgroundImage", "url('assets/yes-room-full.png')");
+    $("#content").css("backgroundImage", "url('assets/yes-room-full.gif')");
     return;
   }
   if(believe == true){
-    $("#content").css("backgroundImage", "url('assets/TBD')");
+    $("#content").css("backgroundImage", "url('assets/tarot-bg.png')");
+    $("#ball").css("visibility", "visible");
+    $("#tarot-text").css("visibility","hidden");
+    $("#ball").text("get card");
+    $("#cards").text("back");
     tarot = true;
   }
   if(believe == false){
@@ -215,7 +342,21 @@ $("#cards").on("click", function(){
 });
 
 $("#ball").on("click", function(){
-
+  if(tarot == true){
+    $("#tarot-text").css("visibility","visible");
+    $("#tarot-card").css("visibility","visible");
+    $("#tarot-title").css("visibility", "visible");
+    var rand = Math.floor(Math.random() * majorArcana.length );
+    $("#tarot-card").css('backgroundImage', 'url('+ majorArcana[rand].image + ')');
+    $("#tarot-text").text(majorArcana[rand].description);
+    $("#tarot-title").text(majorArcana[rand].card);
+    return;
+  }
+  if(gaze == true){
+    $("#horoscope-text").css("visibility", "visible");
+    startHoroscope();
+    return;
+  }
   if(believe == true){
     $("#content").css("backgroundImage", "url('assets/crystal-ball.gif')");
     $("#ball").text("gaze");
@@ -265,5 +406,5 @@ function getHoroscope(){
   else{
     horoscopeText = "You are a " + sign + ", so things may not be going as planned while the moon is in " + moonSign + ". It's okay though, it won't last forever."
   }
-  console.log(horoscopeText);
+      $("#horoscope-text").text(horoscopeText);
 }

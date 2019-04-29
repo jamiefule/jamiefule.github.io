@@ -7,6 +7,10 @@ body{
   src: url('assets/witches_magic/Witches Magic.ttf');
 }
 @font-face {
+  font-family: 'witched2';
+  src: url('assets/witched/Witched.ttf');
+}
+@font-face {
   font-family: 'runes';
   src: url('assets/RUNE.TTF');
 }
@@ -59,17 +63,6 @@ font-family: 'witched';
     width: 800px;
     height: 600px;
     z-index:2;
-}
-#window{
-  z-index: 1;
-	position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 800px;
-    height: 600px;
 }
 
 #believe{
@@ -142,4 +135,53 @@ font-family: 'witched';
   top:20;
   font-size:30px;
   right:20;
+}
+#horoscope-text{
+  visibility: hidden;
+  color:black;
+  font-size:40px;
+  position: absolute;
+    top:25%;
+    left:24%;
+    z-index:99999;
+    font-family: 'witched2';
+    width:50%;
+    text-align:center;
+}
+#tarot-text{
+  visibility: hidden;
+  color:white;
+  font-size:40px;
+  position: absolute;
+    bottom:5%;
+    z-index:99999;
+    left:10%;
+    font-family: 'witched2';
+    width:80%;
+    text-align:center;
+}
+#tarot-title{
+  visibility: hidden;
+  color:white;
+  font-size:40px;
+  position: absolute;
+    top:3.5%;
+    z-index:99999;
+    left:10%;
+    font-family: 'witched2';
+    width:80%;
+    text-align:center;
+}
+#tarot-card{
+  width:260px;
+  height:400px;
+  visibility: hidden;
+  color:white;
+  font-size:40px;
+  position: absolute;
+  top: 12%;
+  left:33%;
+  margin: auto;
+  z-index:99999;
+  background-size: cover;
 }
