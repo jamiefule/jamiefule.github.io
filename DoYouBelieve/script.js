@@ -282,7 +282,8 @@ $.ajax({
     },
     error : function(request,error)
     {
-        alert("Please click the shield icon in your url bar and click 'load unsafe scripts' (It's safe don't worry)");
+      alert("The API is no longer being hosted. This does not work");
+       // alert("Please click the shield icon in your url bar and click 'load unsafe scripts' (It's safe don't worry)");
     }
 });
 $("#cards").on("click", function(){
