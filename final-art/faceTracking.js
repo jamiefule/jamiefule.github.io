@@ -1,10 +1,12 @@
 // https://kylemcdonald.github.io/cv-examples/
 // https://github.com/kylemcdonald/AppropriatingNewTechnologies/wiki/Week-2
+var globalRefreshRate = 5;
+var globalRefreshNum = 0
 
 var capture;
 var tracker
-var w = 640,
-    h = 480;
+var w = window.innerWidth,
+    h = window.innerHeight;
 
 function setup() {
     capture = createCapture({
@@ -18,6 +20,7 @@ function setup() {
     });
     capture.elt.setAttribute('playsinline', '');
     createCanvas(w, h);
+    background(0);
     capture.size(w, h);
     capture.hide();
 
@@ -29,22 +32,23 @@ function setup() {
 }
 
 function draw() {
-    image(capture, 0, 0, w, h);
+background(0);
+  //  image(capture, 0, 0, w, h)
     var positions = tracker.getCurrentPosition();
 
     noFill();
     stroke(255);
-    beginShape();
-    for (var i = 0; i < positions.length; i++) {
-        vertex(positions[i][0], positions[i][1]);
-    }
-    endShape();
+    // beginShape();
+    // for (var i = 0; i < positions.length; i++) {
+    //     vertex(positions[i][0], positions[i][1]);
+    // }
+    // endShape();
 
     noStroke();
     for (var i = 0; i < positions.length; i++) {
         fill(map(i, 0, positions.length, 0, 360), 50, 100);
         ellipse(positions[i][0], positions[i][1], 4, 4);
-        text(i, positions[i][0], positions[i][1]);
+        //text(i, positions[i][0], positions[i][1]);
     }
 
     if (positions.length > 0) {
