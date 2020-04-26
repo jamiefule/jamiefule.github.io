@@ -2,55 +2,66 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Video</title>
+    <title>Video Chat</title>
     <script src="libraries/p5.js" type="text/javascript"></script>
     <script src="libraries/p5.dom.js" type="text/javascript"></script>
     <script src="libraries/p5.sound.js" type="text/javascript"></script>
     <script src="https://www.auduno.com/clmtrackr/build/clmtrackr.min.js"></script>
     <script src="faceTracking.js" type="text/javascript"></script>
+<style>
+body{
+  background-color: black;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.imagesWrapper{
+  height:200px;
+  width:100%;
+}
+td {
+  border: 5px solid lime;
+  height:100%;
+}
 
-    <style> 
-      body {
-        padding: 0px;
-        margin: 0px;
-       // cursor: url('images/saraConnor.png'), auto; 
-      }
+#td-1{
+  background-image: url('./assets/dojacat.gif');
+  background-size: contain;
+}
 
-      select{
-       // cursor: url('images/saraConnor.png'), auto; 
-        position: absolute;
+#td-2{
+  background-image: url('./assets/anonymous.gif');
+  background-size: contain;
+}
 
-      background: blue;
+#td-3{
+  background-image: url('./assets/anime study.gif');
+  background-size: contain;
+}
 
-  font-family: arial;
+#td-4{
+  background-image: url('./assets/sleep.gif');
+  background-size: contain;
+}
 
-      border: 1px solid red;
-      }
+#td-5{
+  background-image: url('./assets/mememe.gif');
+  background-size: contain;
+}
 
-     option:hover{
-       // cursor: url('images/saraConnor.png'), auto; 
-      }
-
-      button{
-        //cursor: url('images/saraConnor.png'), auto; 
-        background: orange;
-
-border: 3px solid purple;
-
-font-family: arial;
-      }
-
-
-    </style>
+</style>
   </head>
   <body>
-
-
-<!-- <video preload= "true" loop = "loop" controls>
-    <source src = "videos/mercuryT10002.mp4" type = "video/mp4">
-</video> -->
-
-
+<table class="imagesWrapper">
+  <tr>
+    <td id='td-1'></td>
+    <td id='td-2'></td>
+    <td id='td-3'></td>
+    <td id='td-4'></td>
+    <td id='td-5'></td>
+  </tr>
+</table>
 
   </body>
 </html>

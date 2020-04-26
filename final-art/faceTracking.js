@@ -5,8 +5,8 @@ var globalRefreshNum = 0
 
 var capture;
 var tracker
-var w = window.innerWidth,
-    h = window.innerHeight;
+var w = 500,
+    h = 500;
 
 function setup() {
     capture = createCapture({
@@ -19,7 +19,8 @@ function setup() {
         console.log('capture ready.')
     });
     capture.elt.setAttribute('playsinline', '');
-    createCanvas(w, h);
+    var canvas = createCanvas(w, h);
+    canvas.position(window.windowWidth/2 - 250, window.windowHeight/2 - 100);
     background(0);
     capture.size(w, h);
     capture.hide();
@@ -32,7 +33,14 @@ function setup() {
 }
 
 function draw() {
-background(0);
+document.getElementById("td-1").style.filter="hue-rotate("+random(0,360)+"deg)";
+document.getElementById("td-2").style.filter="hue-rotate("+random(0,360)+"deg)";
+document.getElementById("td-3").style.filter="hue-rotate("+random(0,360)+"deg)";
+document.getElementById("td-4").style.filter="hue-rotate("+random(0,360)+"deg)";
+document.getElementById("td-5").style.filter="hue-rotate("+random(0,360)+"deg)";
+
+
+background(0)
   //  image(capture, 0, 0, w, h)
     var positions = tracker.getCurrentPosition();
 
