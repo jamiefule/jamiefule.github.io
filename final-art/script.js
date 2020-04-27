@@ -1,6 +1,6 @@
 //Jamie Fule, ART 150 final project
 
-//Face tracking demo code used, see below for credit to example code
+//Face tracking demo code used, see below for credit to example code (mainly position setup)
 // https://kylemcdonald.github.io/cv-examples/
 // https://github.com/kylemcdonald/AppropriatingNewTechnologies/wiki/Week-2
 
@@ -19,6 +19,8 @@ var assetArr;
 
 
 function setup() {
+
+  //toggle fake mic settings
   document.getElementById("mic").addEventListener("click",function(){
     console.log("clicked mic");
     if(globalMic == true){
@@ -29,6 +31,20 @@ function setup() {
       document.getElementById("mic").src = "./assets/mic-on.png";
     }
   })
+
+//toggle fake video settings
+  document.getElementById("cam").addEventListener("click",function(){
+    console.log("clicked cam");
+    if(globalCam == true){
+      document.getElementById("cam").src = "./assets/cam-off.png";
+      globalCam = false;
+    } else{
+      globalCam = true;
+      document.getElementById("cam").src = "./assets/cam-on.png";
+    }
+  })
+
+
     capture = createCapture({
         audio: false,
         video: {
@@ -62,11 +78,19 @@ document.getElementById("td-5").style.filter="hue-rotate("+random(0,360)+"deg)";
 
 background(0)
   //  image(capture, 0, 0, w, h)
-  if(globalMic == true)
+
+  if(globalCam == true){
+    document.getElementById("cryptic").setAttribute("hidden", "true");
+    if(globalMic == true)
     drawFeaturesNormal();
-  else
+    else
     drawFeaturesLimited();
+  } else{
+    document.getElementById("cryptic").removeAttribute("hidden");
+  }
 }
+
+//------------------------------------------------------------------End of setup & Draw Functions--------------------------------------------
 
 function drawFeaturesNormal(){
   var positions = tracker.getCurrentPosition();
@@ -249,7 +273,7 @@ function drawFeaturesLimited(){
 for (var i = 0; i < positions.length; i++) {
 if(i == 27 || i ==32){
   fill(random(255),random(255),random(255));
-  ellipse(positions[i][0], positions[i][1],15,15);
+  rect(positions[i][0], positions[i][1],15,15);
 }
 
 }
