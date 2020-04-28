@@ -79,7 +79,7 @@ var qArr = [
   'What is the square root of 57?',
   'Please put this into Chomsky Normal Form...',
   'Anyone know how to do question 5b?',
-  'Simply solve using differtial equations...',
+  'Simply solve using differential equations...',
   '47x + 25y = 253z, z = 2x, solve for y',
   'okay, time for a quiz..',
   'S0 → AbB | Ab | bB | b   |   C',
