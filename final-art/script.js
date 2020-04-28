@@ -3,8 +3,8 @@
 //Face tracking demo code used, see below for credit to example code (mainly position setup)
 // https://kylemcdonald.github.io/cv-examples/
 // https://github.com/kylemcdonald/AppropriatingNewTechnologies/wiki/Week-2
-
-var globalRefreshRate = 5;
+var horizontalOffset = 0;
+var globalRefreshRate = 125;
 var globalRefreshNum = 0
 
 var globalMic = true;
@@ -15,7 +15,26 @@ var tracker
 var w = 500,
     h = 500;
 
-var assetArr;
+var assetArr = [
+'anime study.gif',
+'anonymous.gif',
+'cam-off.png',
+'cam-on.png',
+'doja-cat-cyber.gif',
+'dojacat.gif',
+'files.txt',
+'fish.png',
+'hamster.jpg',
+'lines.gif',
+'mememe.gif',
+'mememe2.gif',
+'mic-off.png',
+'mic-on.png',
+'notes.gif',
+'sleep.gif',
+'static.gif',
+'totoro-toilet.gif',
+'walter.jpeg'];
 
 
 function setup() {
@@ -75,9 +94,39 @@ document.getElementById("td-3").style.filter="hue-rotate("+random(0,360)+"deg)";
 document.getElementById("td-4").style.filter="hue-rotate("+random(0,360)+"deg)";
 document.getElementById("td-5").style.filter="hue-rotate("+random(0,360)+"deg)";
 
+if(globalRefreshRate == 0){
+  document.getElementById("td-1").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+  globalRefreshRate = 125;
+}
+else if(globalRefreshRate == 25){
+  document.getElementById("td-3").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+}
+else if(globalRefreshRate == 50){
+  document.getElementById("td-3").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+}
+else if(globalRefreshRate == 75){
+  document.getElementById("td-2").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+}
+else if(globalRefreshRate == 100){
+  document.getElementById("td-5").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+}
 
-background(0)
+globalRefreshRate--;
+
+background(0);
   //  image(capture, 0, 0, w, h)
+  //-------------------------horizontal filter------------------------------
+  for(var i = 0; i < 800; i+=10){
+    strokeWeight(5);
+    stroke('rgba(255,0,255,.10)');
+   line(0,i + horizontalOffset,1200, i + horizontalOffset);
+  }
+
+  if(horizontalOffset > 10)
+    horizontalOffset = 0;
+  else
+    horizontalOffset++;
+  strokeWeight(2);
 
   if(globalCam == true){
     document.getElementById("cryptic").setAttribute("hidden", "true");
