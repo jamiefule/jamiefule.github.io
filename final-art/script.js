@@ -92,7 +92,21 @@ var qArr = [
   'can you hear me?',
   'we are still holding office hours',
   's = ut + ½ at 2',
-  'obviously the class thinks they know everything already' //if anyone is reading this, I had a teacher literally say this to the class because nobody was asking questions
+  'obviously the class thinks they know everything already', //if anyone is reading this, I had a teacher literally say this to the class because nobody was asking questions
+  'only the best get an A',
+  'Give an example of a string: S → bSbb | A, A → aA | ε',
+  'this should be review',
+  'spend 2 hours at home for every hour in class',
+  'no calculators allowed',
+  'we are not accepting late submissions',
+  'is this matrix invertible? [ 2 1, 1 4]',
+  'you must stay in the call for attendance',
+  'no excuses.',
+  'why is this hard for you? its just online',
+  'technical difficulties is not an excuse',
+  'excuse me I called your name, please answer',
+  'Give me the solution for 3c',
+  'Why are you not prepared for class?'
 ]
 
 
