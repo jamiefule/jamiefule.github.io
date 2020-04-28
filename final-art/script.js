@@ -1,8 +1,11 @@
-//Jamie Fule, ART 150 final project
+//Jamie Fule, ART final project
 
 //Face tracking demo code used, see below for credit to example code (mainly position setup)
 // https://kylemcdonald.github.io/cv-examples/
 // https://github.com/kylemcdonald/AppropriatingNewTechnologies/wiki/Week-2
+
+//song credit: Horizon Ending - Soft and Furious
+
 var horizontalOffset = 0;
 var globalRefreshRate = 125;
 var globalRefreshNum = 0
@@ -45,8 +48,38 @@ var assetArr = [
   'walter.jpeg'
 ];
 
+var msgArr = [
+
+  'p̶̜͍̾̂̌̉̑͊a̷̱͔̖̲̲̰͂̈̈́̎y̶̟̲͙͔͓̔ͅ ̵̜̳̟͑́a̴̧̢̧̯̬̒̈́͒̔̓̈́t̶͍̀t̶̜̥͓̥͐ȩ̵̝̥̪͕͂̈́͊͜n̴̦̍͆̍͗͌ͅṯ̴͌̈̈́͒̎í̵̬̜͎o̶̘͚̜͑̋n̶͈͚͕̜̍̐́̔͗̈́ͅ!̵   ',
+
+  ' ȃ̶̗r̵͔̈e̴͎̓ ̵͉͐y̶͙͒o̵͍͒ǘ̸̢ ̴̩̌l̴͓̔ĭ̵̱s̸̞͗t̸̤̒e̴̱̿ṅ̵͔i̷͒ͅṇ̵̂g̷̬̑?̸̠̚?̷̟̎     ',
+
+  '  H̴̜̜̰̏͑̋̄͝É̸͚̠̫̃̄̓͐Y̶̧̿̋̎ͅ ̴͖̯͓̐̆W̵̺̉̆Ḥ̴͎͇̥͍͛͝E̷͓̘͐̊̕R̷͎͍̞̉͗E̵̞̒̍̐͋͝ͅ ̶̤͓̑̍D̴̻̈́̀̂͂͠ͅͅÍ̶̯̤̖̐̽̆D̴̝͆̕ ̶̜͐͜Ỳ̴̛͓̲̻̣̺̇͊̏O̶͖͝Û̵͍̣̲͙͕ ̴̛̛̦̱͉͇̥̊̽G̵̛̥͚͈͐͌̃O̶̱͒͑͂̐!̷̨̛̬̼́̈̐̒?̷̻̹̰̂͘  ',
+
+  '  c̷̨̝̦͙̝̏̇̍͘ō̷̞͕m̴̧̺̜̫̼̂e̵̤̪͍̋͋̎̇̕ ̷̜͖̙̿̅̑̿̑b̵͚͋̓̃͘a̶͎͉̻̰͈̚͝c̴̘̙͐̾k̵̗͖͍͕̫̓̎̾ ̵̨̦̓t̶̞͇̦̣̚͘ỏ̸̭̳͖͋̊͑̎ ̸̮͚̍́̿e̷̛̼͈å̴̻̟͕̙̽̆̕͜r̶͍̽͒̈́ṯ̴̲̝̞̗̀̄͗̿̚h̶̛͚͂̂͑  ',
+
+  '  h̸̻̽a̴̹͂v̷̜̕e̴͇͑ ̵̲̋w̸̱͘ê̸͇ ̴̦͑l̵̫̃o̸̯̿s̷͇͠t̴͓͆ ̷̪͝y̴͇̒o̵͉̓u̴̘͛ ̶͇̉f̵͇̂o̷͕̽r̵̻͗ȩ̴̐v̴̟́ë̶͓́r̴̺̎?̵̲͗  ',
+
+  '  i̴͓̓̓ ̸̣̏̑m̶̪̀̇̿i̴̧͍̦̍͐̈́ş̷̪̖̓s̴̻̗͑ ̸̨̫̃̃y̶̛ͅo̷̼͑ǘ̵̯͕̘  ',
+
+  '     a̵̠̽r̴͔͋ë̷͕́ ̶͕̈y̸͔̕o̸͂ͅu̷̟͊ ̴̧̔s̸͈͝t̸͇̓î̸̥ľ̶̼l̵͇͝ ̶͉̂t̴͇̃h̷̾͜ę̵̚r̴͇͝e̴͈͝?̷͝ͅ?̵̰̓?̴̐͜    '
+
+
+];
+
 
 function setup() {
+
+document.getElementById("confirmation").addEventListener("click",function(){
+  
+  //start music
+  var audio = document.createElement('audio');
+  audio.setAttribute('src', 'assets/bgm.mp3');
+  audio.loop = true;
+  audio.play();
+
+  document.getElementById("connecting").setAttribute("hidden","true");
+})
 
   //toggle fake mic settings
   document.getElementById("mic").addEventListener("click",function(){
@@ -84,7 +117,7 @@ function setup() {
     });
     capture.elt.setAttribute('playsinline', '');
     var canvas = createCanvas(w, h);
-    canvas.position(window.windowWidth/2 - 250, window.windowHeight/2 - 100);
+    canvas.position(window.windowWidth/2 - 250, window.windowHeight/2 - 150);
     background(0);
     capture.size(w, h);
     capture.hide();
@@ -97,6 +130,8 @@ function setup() {
 }
 
 function draw() {
+
+  //color shift gifs
 document.getElementById("td-1").style.filter="hue-rotate("+random(0,360)+"deg)";
 document.getElementById("td-2").style.filter="hue-rotate("+random(0,360)+"deg)";
 document.getElementById("td-3").style.filter="hue-rotate("+random(0,360)+"deg)";
@@ -166,6 +201,7 @@ else if(globalRefreshRate == 100){
 globalRefreshRate--;
 
 background(0);
+
   //  image(capture, 0, 0, w, h)
   //-------------------------horizontal filter------------------------------
   for(var i = 0; i < 800; i+=10){
@@ -180,15 +216,33 @@ background(0);
     horizontalOffset++;
   strokeWeight(2);
 
+
   if(globalCam == true){
     document.getElementById("cryptic").setAttribute("hidden", "true");
+    document.getElementById("cryptic2").setAttribute("hidden", "true");
     if(globalMic == true)
     drawFeaturesNormal();
     else
     drawFeaturesLimited();
   } else{
     document.getElementById("cryptic").removeAttribute("hidden");
+    if(globalRefreshRate == 75){
+      document.getElementById("cryptic").innerHTML = msgArr[parseInt(random(msgArr.length))]
+    }
+
+    document.getElementById("cryptic2").removeAttribute("hidden");
+    if(globalRefreshRate == 0){
+      document.getElementById("cryptic2").innerHTML = msgArr[parseInt(random(msgArr.length))]
+    }
   }
+
+  //draw border
+  noFill();
+  strokeWeight(5);
+  stroke(random(255),random(255),random(255));
+  rect(0,0,500,500);
+  strokeWeight(2);
+
 }
 
 //------------------------------------------------------------------End of setup & Draw Functions--------------------------------------------

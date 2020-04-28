@@ -76,6 +76,33 @@ td {
   z-index: 999;
 }
 
+#cryptic2{
+  position:absolute;
+  right:10%;
+  top:60%;
+  color:white;
+  font-size: 50px;
+  animation: shake 1s;
+  animation-iteration-count: infinite;
+  z-index: 999;
+}
+
+#connecting{
+  background-color:white;
+  position:absolute;
+  height:100%;
+  width:100%;
+  z-index:999999;
+  top:0px;
+  left:0px;
+  text-align: center;
+}
+
+#connecting-text{
+  position:relative;
+  top:50%;
+}
+
 /* w3schools animation example */
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -103,11 +130,20 @@ td {
     <td id='td-5'></td>
   </tr>
 </table>
+<div id="connecting">
+  <div id="connecting-text"
+    <p> Connecting to video call... </p>
+    <br>
+    <p style="color:red; font-size:10px;">** Warning, this site includes flashing imagery and sound which will play automatically</p>
+    <button id="confirmation">Join Now</button>
+  </div>
+</div>
 <div id="controls">
   <img id="mic" src="./assets/mic-on.png"/>
   <img id="cam" src="./assets/cam-on.png"/>
 </div>
 
-<div hidden id="cryptic"> a̵̠̽r̴͔͋ë̷͕́ ̶͕̈y̸͔̕o̸͂ͅu̷̟͊ ̴̧̔s̸͈͝t̸͇̓î̸̥ľ̶̼l̵͇͝ ̶͉̂t̴͇̃h̷̾͜ę̵̚r̴͇͝e̴͈͝?̷͝ͅ?̵̰̓?̴̐͜  </div>
+<div hidden id="cryptic"></div>
+<div hidden id="cryptic2"></div>
   </body>
 </html>
