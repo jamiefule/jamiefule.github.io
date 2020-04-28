@@ -67,6 +67,14 @@ var msgArr = [
 
 ];
 
+var headsUpArr = [
+  'hey, your video stopped..',
+  'I cant see you',
+  'wait are you there?',
+  'is the connection bad? I cant see',
+  'bad hair day?'
+]
+
 
 function setup() {
 
@@ -222,6 +230,8 @@ if(globalCam){
 
 
   if(globalCam == true){
+    document.getElementById("headsUp").setAttribute("hidden", "true");
+    document.getElementById("headsUp2").setAttribute("hidden", "true");
     document.getElementById("cryptic").setAttribute("hidden", "true");
     document.getElementById("cryptic2").setAttribute("hidden", "true");
     if(globalMic == true)
@@ -230,18 +240,43 @@ if(globalCam){
     drawFeaturesLimited();
   } else{
 
+
+    //if cam is off and mic is off
+    if(globalMic == false){
+
+      //fun cursor
+      rect(mouseX,mouseY,random(10), random(10));
+
+      document.getElementById("headsUp").setAttribute("hidden", "true");
+      document.getElementById("headsUp2").setAttribute("hidden", "true");
+
+      document.getElementById("cryptic").removeAttribute("hidden");
+      if(globalRefreshRate == 75){
+        document.getElementById("cryptic").innerHTML = msgArr[parseInt(random(msgArr.length))]
+      }
+
+      document.getElementById("cryptic2").removeAttribute("hidden");
+      if(globalRefreshRate == 0){
+        document.getElementById("cryptic2").innerHTML = msgArr[parseInt(random(msgArr.length))]
+      }
+
+      //if cam is off but mic is on
+    } else{
+      document.getElementById("cryptic").setAttribute("hidden", "true");
+      document.getElementById("cryptic2").setAttribute("hidden", "true");
+
       //fun cursor
       ellipse(mouseX,mouseY,random(10), random(10));
 
+      document.getElementById("headsUp").removeAttribute("hidden");
+      if(globalRefreshRate == 75){
+        document.getElementById("headsUp").innerHTML = headsUpArr[parseInt(random(headsUpArr.length))]
+      }
 
-    document.getElementById("cryptic").removeAttribute("hidden");
-    if(globalRefreshRate == 75){
-      document.getElementById("cryptic").innerHTML = msgArr[parseInt(random(msgArr.length))]
-    }
-
-    document.getElementById("cryptic2").removeAttribute("hidden");
-    if(globalRefreshRate == 0){
-      document.getElementById("cryptic2").innerHTML = msgArr[parseInt(random(msgArr.length))]
+      document.getElementById("headsUp2").removeAttribute("hidden");
+      if(globalRefreshRate == 0){
+        document.getElementById("headsUp2").innerHTML = headsUpArr[parseInt(random(headsUpArr.length))]
+      }
     }
   }
 
