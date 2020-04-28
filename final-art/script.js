@@ -75,6 +75,26 @@ var headsUpArr = [
   'bad hair day?'
 ]
 
+var qArr = [
+  'What is the square root of 57?',
+  'Please put this into Chomsky Normal Form...',
+  'Anyone know how to do question 5b?',
+  'Simply solve using differtial equations...',
+  '47x + 25y = 253z, z = 2x, solve for y',
+  'okay, time for a quiz..',
+  'S0 → AbB | Ab | bB | b   |   C',
+  '10011100011010101',
+  'Is this a context-free-grammar?',
+  'this concept is really easy',
+  'I dont understand why this is hard for you',
+  'Midterm Average: 88, Your score: 49',
+  'you had extra time to work on this.',
+  'can you hear me?',
+  'we are still holding office hours',
+  's = ut + ½ at 2',
+  'obviously the class thinks they know everything already' //if anyone is reading this, I had a teacher literally say this to the class because nobody was asking questions
+]
+
 
 function setup() {
 
@@ -229,6 +249,33 @@ if(globalCam){
 }
 
 
+//for class questions
+if(globalCam == true){
+  document.getElementById("question").removeAttribute("hidden");
+  if(globalRefreshRate == 75){
+    document.getElementById("question").innerHTML = qArr[parseInt(random(qArr.length))]
+  }
+  document.getElementById("question2").removeAttribute("hidden");
+  if(globalRefreshRate == 50){
+    document.getElementById("question2").innerHTML = qArr[parseInt(random(qArr.length))]
+  }
+  document.getElementById("question3").removeAttribute("hidden");
+  if(globalRefreshRate == 25){
+    document.getElementById("question3").innerHTML = qArr[parseInt(random(qArr.length))]
+  }
+  document.getElementById("question4").removeAttribute("hidden");
+  if(globalRefreshRate == 0){
+    document.getElementById("question4").innerHTML = qArr[parseInt(random(qArr.length))]
+  }
+
+} else{
+  document.getElementById("question").setAttribute("hidden", "true");
+  document.getElementById("question2").setAttribute("hidden", "true");
+  document.getElementById("question3").setAttribute("hidden", "true");
+  document.getElementById("question4").setAttribute("hidden", "true");
+}
+
+//-------------------for other combination messages and misc
   if(globalCam == true){
     document.getElementById("headsUp").setAttribute("hidden", "true");
     document.getElementById("headsUp2").setAttribute("hidden", "true");
