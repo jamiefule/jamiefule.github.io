@@ -71,7 +71,7 @@ var msgArr = [
 function setup() {
 
 document.getElementById("confirmation").addEventListener("click",function(){
-  
+
   //start music
   var audio = document.createElement('audio');
   audio.setAttribute('src', 'assets/bgm.mp3');
@@ -99,6 +99,7 @@ document.getElementById("confirmation").addEventListener("click",function(){
     if(globalCam == true){
       document.getElementById("cam").src = "./assets/cam-off.png";
       globalCam = false;
+      background(0);
     } else{
       globalCam = true;
       document.getElementById("cam").src = "./assets/cam-on.png";
@@ -200,9 +201,10 @@ else if(globalRefreshRate == 100){
 
 globalRefreshRate--;
 
-background(0);
+if(globalCam)
+  background(0)
 
-  //  image(capture, 0, 0, w, h)
+if(globalCam){
   //-------------------------horizontal filter------------------------------
   for(var i = 0; i < 800; i+=10){
     strokeWeight(5);
@@ -216,6 +218,8 @@ background(0);
     horizontalOffset++;
   strokeWeight(2);
 
+}
+
 
   if(globalCam == true){
     document.getElementById("cryptic").setAttribute("hidden", "true");
@@ -225,6 +229,11 @@ background(0);
     else
     drawFeaturesLimited();
   } else{
+
+      //fun cursor
+      ellipse(mouseX,mouseY,random(10), random(10));
+
+
     document.getElementById("cryptic").removeAttribute("hidden");
     if(globalRefreshRate == 75){
       document.getElementById("cryptic").innerHTML = msgArr[parseInt(random(msgArr.length))]
