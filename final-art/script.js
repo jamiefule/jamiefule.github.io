@@ -16,25 +16,34 @@ var w = 500,
     h = 500;
 
 var assetArr = [
-'anime study.gif',
-'anonymous.gif',
-'cam-off.png',
-'cam-on.png',
-'doja-cat-cyber.gif',
-'dojacat.gif',
-'files.txt',
-'fish.png',
-'hamster.jpg',
-'lines.gif',
-'mememe.gif',
-'mememe2.gif',
-'mic-off.png',
-'mic-on.png',
-'notes.gif',
-'sleep.gif',
-'static.gif',
-'totoro-toilet.gif',
-'walter.jpeg'];
+  'animalCrossing.gif',
+  'anime study.gif',
+  'anonymous.gif',
+  'bored-2.gif',
+  'bored.gif',
+  'cat-type.gif',
+  'ditto.gif',
+  'doja-cat-cyber.gif',
+  'dojacat.gif',
+  'eyes.gif',
+  'file.txt',
+  'fish.png',
+  'glitch.gif',
+  'hamster.jpg',
+  'jennifer.gif',
+  'lines.gif',
+  'matrix.gif',
+  'mememe.gif',
+  'mememe2.gif',
+  'notes.gif',
+  'pbj.gif',
+  'potatoes.gif',
+  'sleep.gif',
+  'static.gif',
+  'takeOnMe.gif',
+  'totoro-toilet.gif',
+  'walter.jpeg'
+];
 
 
 function setup() {
@@ -96,19 +105,62 @@ document.getElementById("td-5").style.filter="hue-rotate("+random(0,360)+"deg)";
 
 if(globalRefreshRate == 0){
   document.getElementById("td-1").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+
+  //if cam is off, increase chance of angry gifs showing, but don't force 100% angry gifs
+  if(globalCam == false){
+    //if(parseInt(random(3)) % 2 == 0)
+        document.getElementById("td-1").style.backgroundImage = "url(./assets/angry-1.gif)"
+
+  }
+
   globalRefreshRate = 125;
 }
 else if(globalRefreshRate == 25){
-  document.getElementById("td-3").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+  document.getElementById("td-4").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+
+  //if cam is off, increase chance of angry gifs showing, but don't force 100% angry gifs
+  if(globalCam == false){
+    //if(parseInt(random(3)) % 2 == 0)
+        document.getElementById("td-4").style.backgroundImage = "url(./assets/angry-2.gif)"
+
+
+
+}
 }
 else if(globalRefreshRate == 50){
   document.getElementById("td-3").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+
+  //if cam is off, increase chance of angry gifs showing, but don't force 100% angry gifs
+  if(globalCam == false){
+    //if(parseInt(random(3)) % 2 == 0)
+        document.getElementById("td-3").style.backgroundImage = "url(./assets/angry-3.gif)"
+
+
+
+}
 }
 else if(globalRefreshRate == 75){
   document.getElementById("td-2").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+
+  //if cam is off, increase chance of angry gifs showing, but don't force 100% angry gifs
+  if(globalCam == false){
+    //if(parseInt(random(3)) % 2 == 0)
+        document.getElementById("td-2").style.backgroundImage = "url(./assets/angry-4.gif)"
+
+
+
+}
 }
 else if(globalRefreshRate == 100){
   document.getElementById("td-5").style.backgroundImage = "url(./assets/" + assetArr[parseInt(random(assetArr.length))] + ")"
+
+  //if cam is off, increase chance of angry gifs showing, but don't force 100% angry gifs
+  if(globalCam == false){
+    //if(parseInt(random(3)) % 2 == 0){
+        document.getElementById("td-5").style.backgroundImage = "url(./assets/angry-5.gif)"
+
+  }
+
 }
 
 globalRefreshRate--;
