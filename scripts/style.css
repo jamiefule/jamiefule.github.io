@@ -18,7 +18,7 @@ h1{
   margin: auto;
   border-radius: 5px;
   padding-bottom: 30px;
-  
+  margin-top: 165px; 
 
 }
 
@@ -30,7 +30,6 @@ h1{
   border-radius: 5px;
   line-height: 50px;
   overflow: hidden;
-  margin-top: 165px; 
 }
 
 .pages a{
