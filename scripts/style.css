@@ -3,24 +3,61 @@
 }
 
 body{
-  background-color: #f7e8f2;
+  background-image: url('../assets/bg.png');
+}
+h1{
+  color: white;
 }
 
 .content{
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8); 
   text-align: center;
   border:solid 1px;
   border-color:#ffe2f5;
+  width: 66%;
+  margin: auto;
+  border-radius: 5px;
+  padding-bottom: 30px;
+  
+
 }
 
 .pages{
   background-color: black;
-  width:30%;
+  width: 100%;
+  height: 50px;
   color:white;
-  text-align: center;
+  border-radius: 5px;
+  line-height: 50px;
+  overflow: hidden;
 }
 
 .pages a{
-  color:white;
-  text-decoration:none;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+#translucent {
+  background-color: rgba(27, 61, 206, 0.3); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  backdrop-filter: blur(6px);
+}
+
+table{
+  margin: auto;
+  width: 66%;
+}
+
+table td{
+  width: 33%;
+  
 }
