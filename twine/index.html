@@ -11,7 +11,10 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="Unlocked" startnode="1" creator="Twine" creator-version="2.3.10" ifid="E5F944B0-1144-4C4A-9B3C-C1CB56E4E304" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">tw-story[tags~="light"] {
+<tw-storydata name="Unlocked" startnode="1" creator="Twine" creator-version="2.3.10" ifid="E5F944B0-1144-4C4A-9B3C-C1CB56E4E304" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">*{
+  font-family: "Courier New", monospace;
+}
+tw-story[tags~="light"] {
   background-image: 		
 	  url("https://jamiefule.github.io/twine/assets/light-small.png");
   background-repeat: no-repeat;
@@ -80,69 +83,87 @@ tw-story[tags~="win"] {
   background-position: center;
 }
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="456,0.5" size="100,100">You&#39;re feeling pretty tired, but you can&#39;t help but feel like you&#39;re ignoring something important. 
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">let click = false;
+
+window.onclick = function(){
+	var audio = new Audio('https://jamiefule.github.io/twine/assets/Anamalie.mp3');
+
+	audio.loop = true;
+	
+	if(!click){
+		audio.play();	
+		click = true;
+	}
+
+}</script><tw-passagedata pid="1" name="Start" tags="" position="456,0" size="100,100">You&#39;re feeling pretty tired, but you can&#39;t help but feel like you&#39;re ignoring something important. 
 
 What do you want to do?
 
 [[Meditate]]
-[[Go to Bed]]</tw-passagedata><tw-passagedata pid="2" name="Meditate" tags="" position="200,0.5" size="100,100">(text-style: &quot;blur&quot;)[You take a deep breath.]
+[[Go to Bed]]</tw-passagedata><tw-passagedata pid="2" name="Meditate" tags="" position="200,0" size="100,100">(text-style: &quot;blur&quot;)[You take a deep breath.]
 
-[[Close your eyes]]</tw-passagedata><tw-passagedata pid="3" name="Go to Bed" tags="" position="609,75.5" size="100,100">You wake up, feeling exhausted as usual. 
+[[Close your eyes]]</tw-passagedata><tw-passagedata pid="3" name="Go to Bed" tags="" position="609,75" size="100,100">You wake up, feeling exhausted as usual. 
 
 [[Go about your day]]</tw-passagedata><tw-passagedata pid="4" name="Go about your day" tags="" position="766,0" size="100,100">Your day was nothing special.
 
-[[Head to your room -&gt;Start]]</tw-passagedata><tw-passagedata pid="5" name="Close your eyes" tags="void" position="36,26.5" size="100,100">In the darkness, you see a bright &lt;b&gt;mirror-like&lt;/b&gt; object.
+[[Head to your room -&gt;Start]]</tw-passagedata><tw-passagedata pid="5" name="Close your eyes" tags="void" position="36,26" size="100,100">In the darkness, you see a bright &lt;b&gt;mirror-like&lt;/b&gt; object.
 
 What will you do?
 
 [[Head towards the light]]
-[[Head another direction]]</tw-passagedata><tw-passagedata pid="6" name="Head towards the light" tags="void" position="32,255.5" size="100,100">As you approach the mirror, you notice that it appears &lt;b&gt;hollow&lt;/b&gt;. 
+[[Head another direction]]</tw-passagedata><tw-passagedata pid="6" name="Head towards the light" tags="void" position="32,255" size="100,100">As you approach the mirror, you notice that it appears &lt;b&gt;hollow&lt;/b&gt;. 
 
 What will you do?
 
 [[Enter the Mirror]]
-[[Head another direction]]</tw-passagedata><tw-passagedata pid="7" name="Head another direction" tags="" position="205,163.5" size="100,100">As you head from the light, you notice (text-style: &quot;smear&quot;)[two small bright orbs.] 
+[[Head another direction]]</tw-passagedata><tw-passagedata pid="7" name="Head another direction" tags="" position="205,164" size="100,100">As you head from the light, you notice (text-style: &quot;smear&quot;)[two small bright orbs.] 
 
 Where should you head?
 [[Back to the mirror-&gt;Head towards the light]]
-[[Towards the orbs]]</tw-passagedata><tw-passagedata pid="8" name="Towards the orbs" tags="deer" position="453,165.5" size="100,100">You come across (text-style: &quot;rumble&quot;)[? ? ?]
+[[Towards the orbs]]</tw-passagedata><tw-passagedata pid="8" name="Towards the orbs" tags="deer" position="453,165" size="100,100">You come across (text-style: &quot;rumble&quot;)[? ? ?]
 
-[[S p e a k]]</tw-passagedata><tw-passagedata pid="9" name="Enter the Mirror" tags="fine" position="24,412.5" size="100,100">As you enter the mirror, you feel a sense of (text-style: &quot;smear&quot;)[peace] wash over you.
+[[S p e a k]]</tw-passagedata><tw-passagedata pid="9" name="Enter the Mirror" tags="fine" position="24,412" size="100,100">As you enter the mirror, you feel a sense of (text-style: &quot;smear&quot;)[peace] wash over you.
 
-[[Reflect]]</tw-passagedata><tw-passagedata pid="10" name="S p e a k" tags="deer" position="418,296.5" size="100,100">WHAT DO YOU (text-style: &quot;smear&quot;)[DESIRE?]
+[[Reflect]]</tw-passagedata><tw-passagedata pid="10" name="S p e a k" tags="deer" position="418,296" size="100,100">WHAT DO YOU &lt;span style=&#39;color:red;&#39;&gt;(text-style: &quot;smear&quot;)[DESIRE?]&lt;/span&gt;
 
 [[A way out]]
-[[Something important]]</tw-passagedata><tw-passagedata pid="11" name="A way out" tags="light" position="656,265.5" size="100,100">IF THAT IS ALL, ENTER THE LIGHT
+[[Something important]]</tw-passagedata><tw-passagedata pid="11" name="A way out" tags="light" position="656,265" size="100,100">IF THAT IS ALL, ENTER THE LIGHT
 
-[[Enter the light]]</tw-passagedata><tw-passagedata pid="12" name="Something important" tags="deer" position="178,283.5" size="100,100">WHAT YOU SEEK IS IN (text-style: &quot;smear&quot;)[ANOTHER DIRECTION]
+[[Enter the light]]</tw-passagedata><tw-passagedata pid="12" name="Something important" tags="deer" position="178,283" size="100,100">WHAT YOU SEEK IS IN (text-style: &quot;smear&quot;)[ANOTHER DIRECTION]
 
-[[Head back to the mirror -&gt;Head towards the light]]</tw-passagedata><tw-passagedata pid="13" name="Enter the light" tags="dark" position="563,438.5" size="100,100">There is nothing here and nowhere else to go
+[[Head back to the mirror -&gt;Head towards the light]]</tw-passagedata><tw-passagedata pid="13" name="Enter the light" tags="dark" position="563,438" size="100,100">There is nothing here and nowhere else to go
 
 [[Wait for something interesting]]
-[[Go Back]]</tw-passagedata><tw-passagedata pid="14" name="Wait for something interesting" tags="dark" position="687,561.5" size="100,100">Nothing interesting happened. Nothing interesting has ever happened here.
+[[Go Back]]</tw-passagedata><tw-passagedata pid="14" name="Wait for something interesting" tags="dark" position="687,561" size="100,100">Nothing interesting happened. Nothing interesting has ever happened here.
 
-[[Oh-&gt;Enter the light]] </tw-passagedata><tw-passagedata pid="15" name="Go Back" tags="deer" position="440,549.5" size="100,100">. . . WHY HAVE YOU RETURNED?
+[[Oh-&gt;Enter the light]] </tw-passagedata><tw-passagedata pid="15" name="Go Back" tags="deer" position="440,549" size="100,100">. . . WHY HAVE YOU RETURNED?
 
-[[Where else was I supposed to go?]]</tw-passagedata><tw-passagedata pid="16" name="Where else was I supposed to go?" tags="deer" position="565,635.5" size="100,100">YOU SHOULD HAVE LEFT WHILE YOU HAD THE CHANCE. I CAN NO LONGER LET YOU LEAVE.
+[[Where else was I supposed to go?]]</tw-passagedata><tw-passagedata pid="16" name="Where else was I supposed to go?" tags="deer" position="565,635" size="100,100">YOU SHOULD HAVE LEFT WHILE YOU HAD THE CHANCE. I CAN NO LONGER LET YOU LEAVE.
 
 
-[[Go home]]</tw-passagedata><tw-passagedata pid="17" name="Go home" tags="deer" position="445,742.5" size="100,100">I CANNOT LET YOU (text-style: &quot;smear&quot;)[LEAVE].
+[[Go home]]</tw-passagedata><tw-passagedata pid="17" name="Go home" tags="deer" position="445,742" size="100,100">I CANNOT LET YOU (text-style: &quot;smear&quot;)[LEAVE].
 
-[[Leave]]</tw-passagedata><tw-passagedata pid="18" name="Leave" tags="deer" position="705,744.5" size="100,100">YOU WILL NOT BE (text-style: &quot;rumble&quot;)[LEAVING]
+[[Leave]]</tw-passagedata><tw-passagedata pid="18" name="Leave" tags="deer" position="705,744" size="100,100">YOU WILL NOT BE &lt;span style=&#39;color:red;&#39;&gt;(text-style: &quot;rumble&quot;)[LEAVING]&lt;/span&gt;
 
 [[Leave-&gt;Go home]]
-[[Open your eyes]]</tw-passagedata><tw-passagedata pid="19" name="Open your eyes" tags="deer" position="445,868.5" size="100,100">You tried to open your eyes, but nothing happened.
+[[Open your eyes]]</tw-passagedata><tw-passagedata pid="19" name="Open your eyes" tags="deer" position="445,868" size="100,100">You tried to open your eyes, but nothing happened.
 
-[[Lose Hope]]</tw-passagedata><tw-passagedata pid="20" name="Lose Hope" tags="void-lost" position="825,871.5" size="100,100">(text-style: &quot;blur&quot;)[Your soul is lost forever]
+[[Lose Hope]]</tw-passagedata><tw-passagedata pid="20" name="Lose Hope" tags="void-lost" position="825,871" size="100,100">(text-style: &quot;blur&quot;)[Your soul is lost forever]
 
-[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="21" name="Reflect" tags="fine" position="22,551.5" size="100,100">You feel at (text-style: &quot;smear&quot;)[peace] with the universe.
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="21" name="Reflect" tags="fine" position="22,551" size="100,100">You feel at (text-style: &quot;smear&quot;)[peace] with the universe.
 
 [[Open Eyes]]
-[[Never Leave]]</tw-passagedata><tw-passagedata pid="22" name="Open Eyes" tags="win" position="195,415.5" size="100,100">You open your eyes, feeling connected with the universe.
+[[Never Leave]]</tw-passagedata><tw-passagedata pid="22" name="Open Eyes" tags="win" position="195,415" size="100,100">You open your eyes, feeling connected with the universe.
 Congratulations!
-[[Play Again-&gt;Start]]</tw-passagedata><tw-passagedata pid="23" name="Never Leave" tags="void-invert" position="304,531.5" size="100,100">(text-style: &quot;blur&quot;)[Your soul is lost forever]
+[[Play Again-&gt;Start]]
+[[Credits]]</tw-passagedata><tw-passagedata pid="23" name="Never Leave" tags="void-invert" position="304,531" size="100,100">(text-style: &quot;blur&quot;)[Your soul is lost forever]
 
-[[Restart-&gt;Start]]</tw-passagedata></tw-storydata>
+[[Restart-&gt;Start]]</tw-passagedata><tw-passagedata pid="24" name="Credits" tags="" position="168,746" size="100,100">Soundtrack:
+&quot;Anamalie&quot; Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
+[[Play Again-&gt;Start]]</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
