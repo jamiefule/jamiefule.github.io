@@ -61,6 +61,11 @@ h1 span {
     }
 }
 /* End code from https://codemyui.com/wavy-text-bouncy-letter-animation/ */
+
+body{
+    overflow-x: hidden;
+}
+
 #mainCanvas{
     height: 80%;
     width: 80%;
@@ -76,6 +81,5 @@ h1 span {
     text-align: center;
     font-size: 80px;
     top: -5%;
-    position:absolute
-    overflow-x: hide;
+    position:absolute;
 }
