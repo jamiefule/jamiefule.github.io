@@ -7,7 +7,7 @@ function setup(){
    disp = createCanvas(windowWidth * .8, windowHeight * .75);
    disp.position(windowWidth/10, btmOfTxt - 80, 'fixed');
    disp.background('white');
-   frameRate(15);
+   frameRate(60);
    smooth();
 
    //setup first globbie
@@ -163,8 +163,8 @@ function drawGlobbies(){
         beginShape();
         for(var s = 0; s < globbies[i].shape.length; s++){
             
-            var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + (noise(random(-5,5))*3*getRandomSign());
-            var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + (noise(random(-5,5))*3*getRandomSign());
+            var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + (noise(random(-5,5))*getRandomSign());
+            var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + (noise(random(-5,5))*getRandomSign());
 
 
             //update globbies point occasionally
@@ -209,14 +209,14 @@ function drawEyes(i){
 
                 if(n == 1){
                     if(s == int(globbies[i].shape.length/2))
-                        text('👁‍🗨', center.split(',')[0], center.split(',')[1])
+                        text('👁‍🗨', x - 20, y + 20)
                 }
 
                 if(n == 2){
                     if(s == int(globbies[i].shape.length/3))
-                        text('👁‍🗨', int(center.split(',')[0]) + 10 + getRandomSign(), int(center.split(',')[1]) - 10 + getRandomSign())
+                        text('👁‍🗨', x - 20, y + 20)
                     if(s == int(globbies[i].shape.length/6))
-                        text('👁‍🗨', int(center.split(',')[0]) - 25 + getRandomSign(), int(center.split(',')[1]) + 15 + getRandomSign())
+                        text('👁‍🗨', x, y - 20)
                 }
 
                 if(n == 3){
@@ -224,7 +224,7 @@ function drawEyes(i){
                     if(s == int(globbies[i].shape.length/3))
                         text('👁‍🗨', x - 20, y + 20)
                     if(s == int(globbies[i].shape.length/5))
-                        text('👁‍🗨', int(center.split(',')[0]) + 10 + getRandomSign(), int(center.split(',')[1]) - 10 + getRandomSign())
+                        text('👁‍🗨', x + 5, y - 20)
                     if(s == int(globbies[i].shape.length/7))
                         text('👁‍🗨', x + 20, y)
                 }
