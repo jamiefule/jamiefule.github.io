@@ -15,22 +15,27 @@ function setup(){
    let g = random(255);
    let b = random(255);
    
-   createGlobbie(color(r, g, b), random(4), generateShape(30, 30), random(10), [], [random(disp.width * .1, disp.width * .9), random(disp.height * .69, disp.height)], []);
+   createGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .1, disp.width * .3), random(disp.height * .69, disp.height)], []);
 
-   //setup first globbie
+    //setup second globbie
     r = random(255);
     g = random(255);
     b = random(255);
+    
+    createGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .3, disp.width * .6), random(disp.height * .69, disp.height)], []);
+
+    //set up third globbie
+   r = random(255);
+   g = random(255);
+   b = random(255);
    
-   createGlobbie(color(r, g, b), random(4), generateShape(30, 30), random(10), [], [random(disp.width * .1, disp.width * .9), random(disp.height * .69, disp.height)], []);
-      //setup first globbie
-       r = random(255);
-       g = random(255);
-       b = random(255);
-      
-      createGlobbie(color(r, g, b), random(4), generateShape(30, 30), random(10), [], [random(disp.width * .1, disp.width * .9), random(disp.height * .69, disp.height)], []);
+   createGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .6, disp.width * .9), random(disp.height * .69, disp.height)], []);
 
 }
+
+function windowResized() {
+    resizeCanvas(windowWidth * .8, windowHeight * .75);
+  }
 
 function draw(){
     //clear each time
@@ -39,7 +44,7 @@ function draw(){
     stroke(0);
     line(disp.width * .1, disp.height * .7, disp.width * .9, disp.height * .7)
     drawGlobbies();
-  //  moveGlobbies();
+    //moveGlobbies();
 
     // //check collision
     // for(var i = 0; i < globbies.length; i++){
@@ -138,6 +143,12 @@ function generateShape(pointLimit, sizeLimit){
     return points;
 }
 
+function getRandomSign(){
+    if(random(10) >= 5)
+        return 1;
+    return -1;
+}
+
 function drawGlobbies(){
     for(var i = 0; i < globbies.length; i++){
         var firstx, firsty;
@@ -152,8 +163,13 @@ function drawGlobbies(){
         for(var s = 0; s < globbies[i].shape.length; s++){
             
             noiseSeed(random(-400,400))
-            var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + noise(random(-50,50))*3;
-            var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + noise(random(-50,50))*3;
+            var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + (noise(random(-5,5))*3*getRandomSign());
+            var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + (noise(random(-5,5))*3*getRandomSign());
+
+
+            //update globbies point occasionally
+            if(int(random(10)) % 7 == 0)
+                globbies[i].shape[s] = (globbies[i].pos[0] - x)+","+(globbies[i].pos[1] - y); 
 
             if(s == 0){
                 firstx = x
@@ -172,8 +188,41 @@ function drawGlobbies(){
         //connect remaining line
         textSize(20)
         text('👄', firstx - 10, firsty - 5)
+
+        drawEyes(i);
     }
 
+}
+
+//draw eyes on globbies
+function drawEyes(i){
+            var n = globbies[i].numEyes;
+            for(var s = 0; s < globbies[i].shape.length; s++){
+                var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0];
+                var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1];
+
+                if(n == 1){
+                    if(s == int(globbies[i].shape.length/2))
+                        text('👁‍🗨', x - 20, y)
+                }
+
+                if(n == 2){
+                    if(s == int(globbies[i].shape.length/3))
+                        text('👁‍🗨', x - 20, y + 20)
+                    if(s == int(globbies[i].shape.length/6))
+                        text('👁‍🗨', x + 20, y - 20)
+                }
+
+                if(n == 3){
+                    // console.log("3, s: "+s+" len: " + globbies[i].shape.length )
+                    if(s == int(globbies[i].shape.length/3))
+                        text('👁‍🗨', x - 20, y + 20)
+                    if(s == int(globbies[i].shape.length/5))
+                        text('👁‍🗨', x, y - 20)
+                    if(s == int(globbies[i].shape.length/7))
+                        text('👁‍🗨', x + 20, y)
+                }
+            }
 }
 
 //polyPoint function from: https://editor.p5js.org/xinxin/sketches/WmIhRxLL
