@@ -31,7 +31,7 @@ h1 span {
     padding-left: 3%;
     top: 20px;
     display: inline-block;
-    animation: bounce 1.5s ease infinite alternate;
+    animation: bounce 1.5s ease infinite alternate, tilt 30s ease infinite alternate;
     font-family: orangeJuice, courier;
     font-size: 80px;
     color: #FFF;
@@ -48,12 +48,27 @@ h1 span {
   }
   
   h1 span:nth-child(2) { animation-delay: .1s; }
-  h1 span:nth-child(3) { animation-delay: .2s; }
+  h1 span:nth-child(3) { animation-delay: .4s; }
   h1 span:nth-child(4) { animation-delay: .1s; }
-  h1 span:nth-child(5) { animation-delay: .4s; }
+  h1 span:nth-child(5) { animation-delay: .7s; }
   h1 span:nth-child(6) { animation-delay: .1s; }
   h1 span:nth-child(7) { animation-delay: .6s; }
   h1 span:nth-child(8) { animation-delay: .1s; }
+
+  @keyframes tilt {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-20deg); }
+    20% { transform: rotate(10deg); }
+    30% { transform: rotate(0deg); }
+    40% { transform: rotate(10deg); }
+    50% { transform: rotate(-20deg); }
+    60% { transform: rotate(0deg); }
+    70% { transform: rotate(-20deg); }
+    80% { transform: rotate(10deg); }
+    90% { transform: rotate(0deg); }
+    100% { transform: rotate(-20deg); }
+  }
+
   
   @keyframes bounce {
     100% {
@@ -73,7 +88,7 @@ body{
 
 @font-face {
     font-family: orangeJuice;
-    src: url('./assets/splash-blobs-n-dots/SplashBlobsnDots.ttf');
+    src: url('./assets/Globbies-Regular.ttf');
   }
 
 #title{

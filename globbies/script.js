@@ -7,17 +7,18 @@ let mouth;
 
 function preload() {
     //setup eye and mouth paths
-   eye = loadImage('./assets/emojis/eye.png');
-   mouth = loadImage('./assets/emojis/mouth.png');
-  }
+   eye = loadImage('./globbies/assets/emojis/eye-small.png');
+   mouth = loadImage('./assets/emojis/mouth-small.png');
+   
+}
 
 function setup(){
     var btmOfTxt = $("#title").offset().top + $("#title").outerHeight(true);
-   disp = createCanvas(windowWidth * .8, windowHeight * .75);
-   disp.position(windowWidth/10, btmOfTxt - 80, 'fixed');
-   disp.background('white');
-   frameRate(60);
-   smooth();
+    disp = createCanvas(windowWidth * .8, windowHeight * .75);
+    disp.position(windowWidth/10, btmOfTxt - 80, 'fixed');
+    disp.background('white');
+    frameRate(60);
+    smooth();
 
    //setup first globbie
    let r = random(255);
