@@ -119,7 +119,7 @@ function drawEyesBlobGlobbies(i){
 
         if(n == 1){
             if(s == int(blobglobbies[i].shape.length/2))
-                text(eye, x - 20, y + 20)
+                image(eye, x - 20, y + 20)
         }
 
         if(n == 2){
