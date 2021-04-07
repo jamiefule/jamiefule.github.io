@@ -46,24 +46,24 @@ function draw(){
     drawGlobbies();
     //moveGlobbies();
 
-    // //check collision
-    // for(var i = 0; i < globbies.length; i++){
-    //     for(var s = 0;  s < globbies[i].shape.length; s++){
-    //         //compare shapes to the other globbies
-    //         for(var j = 0; j < globbies.length; j++){
-    //             var col = polyPoint(globbies[j].vertices, globbies[i].shape[s].split(',')[0], globbies[i].shape[s].split(',')[1]);
-    //             if(col){
-    //                 console.log("!")
-    //                 //move odd globs left and even globs right
-    //                 if(i % 2 == 0){
-    //                     globbies[i].pos[0] = globbies[i].pos[0] + 3
-    //                 } else{
-    //                     globbies[i].pos[0] = globbies[i].pos[0] - 3
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    //check collision
+    for(var i = 0; i < globbies.length; i++){
+        for(var s = 0;  s < globbies[i].shape.length; s++){
+            //compare shapes to the other globbies
+            for(var j = 0; j < globbies.length; j++){
+                var col = polyPoint(globbies[j].vertices, globbies[i].shape[s].split(',')[0], globbies[i].shape[s].split(',')[1]);
+                if(col){
+                    console.log("!")
+                    //move odd globs left and even globs right
+                    if(i % 2 == 0){
+                        globbies[i].pos[0] = globbies[i].pos[0] + 3
+                    } else{
+                        globbies[i].pos[0] = globbies[i].pos[0] - 3
+                    }
+                }
+            }
+        }
+    }
     
 }
 
@@ -86,7 +86,8 @@ function createGlobbie(c, n, s, i, b, p, v){
                 intellegence: i,
                 bodyParts: b,
                 pos: p,
-                vertices: v};
+                vertices: v,
+                center: []};
 
     globbies.push(glob);
 }
@@ -105,7 +106,7 @@ function generateShape(pointLimit, sizeLimit){
         } 
         else if(i > numPoints/2){ //third quarter
             console.log("2")
-            
+
             var tempx = random(lastx - random(-10,10), lastx - sizeLimit);
             var tempy = random(lasty - random(-10,10), lasty - sizeLimit);
         }
@@ -162,7 +163,6 @@ function drawGlobbies(){
         beginShape();
         for(var s = 0; s < globbies[i].shape.length; s++){
             
-            noiseSeed(random(-400,400))
             var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + (noise(random(-5,5))*3*getRandomSign());
             var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + (noise(random(-5,5))*3*getRandomSign());
 
@@ -170,6 +170,11 @@ function drawGlobbies(){
             //update globbies point occasionally
             if(int(random(10)) % 7 == 0)
                 globbies[i].shape[s] = (globbies[i].pos[0] - x)+","+(globbies[i].pos[1] - y); 
+
+            //set approx center
+            if(s == int(globbies[i].shape.length/2)){
+                globbies[i].center = (globbies[i].pos[0] + x)/2  + "," + (globbies[i].pos[1] + y)/2
+            }
 
             if(s == 0){
                 firstx = x
@@ -200,17 +205,18 @@ function drawEyes(i){
             for(var s = 0; s < globbies[i].shape.length; s++){
                 var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0];
                 var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1];
+                var center = globbies[i].center;
 
                 if(n == 1){
                     if(s == int(globbies[i].shape.length/2))
-                        text('👁‍🗨', x - 20, y)
+                        text('👁‍🗨', center.split(',')[0], center.split(',')[1])
                 }
 
                 if(n == 2){
                     if(s == int(globbies[i].shape.length/3))
-                        text('👁‍🗨', x - 20, y + 20)
+                        text('👁‍🗨', int(center.split(',')[0]) + 10 + getRandomSign(), int(center.split(',')[1]) - 10 + getRandomSign())
                     if(s == int(globbies[i].shape.length/6))
-                        text('👁‍🗨', x + 20, y - 20)
+                        text('👁‍🗨', int(center.split(',')[0]) - 25 + getRandomSign(), int(center.split(',')[1]) + 15 + getRandomSign())
                 }
 
                 if(n == 3){
@@ -218,7 +224,7 @@ function drawEyes(i){
                     if(s == int(globbies[i].shape.length/3))
                         text('👁‍🗨', x - 20, y + 20)
                     if(s == int(globbies[i].shape.length/5))
-                        text('👁‍🗨', x, y - 20)
+                        text('👁‍🗨', int(center.split(',')[0]) + 10 + getRandomSign(), int(center.split(',')[1]) - 10 + getRandomSign())
                     if(s == int(globbies[i].shape.length/7))
                         text('👁‍🗨', x + 20, y)
                 }
