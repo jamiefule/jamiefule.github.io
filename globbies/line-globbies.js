@@ -98,7 +98,7 @@ function drawLineGlobbies(){
 
         //connect remaining line
         textSize(20)
-        text('👄', firstx - 10, firsty - 5)
+        text(mouth, firstx - 10, firsty - 5)
 
         drawEyesLineGlobbies(i);
     }
