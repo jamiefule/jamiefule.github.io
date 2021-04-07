@@ -115,24 +115,24 @@ function drawEyesLineGlobbies(i){
 
         if(n == 1){
             if(s == int(globbies[i].shape.length/2))
-                text('👁‍🗨', x - 20, y + 20)
+                image(eye, x - 20, y + 20)
         }
 
         if(n == 2){
             if(s == int(globbies[i].shape.length/3))
-                text('👁‍🗨', x - 20, y + 20)
+                image(eye, x - 20, y + 20)
             if(s == int(globbies[i].shape.length/6))
-                text('👁‍🗨', x, y - 20)
+                image(eye, x, y - 20)
         }
 
         if(n == 3){
             // console.log("3, s: "+s+" len: " + globbies[i].shape.length )
             if(s == int(globbies[i].shape.length/3))
-                text('👁‍🗨', x - 20, y + 20)
+                image(eye, x - 20, y + 20)
             if(s == int(globbies[i].shape.length/5))
-                text('👁‍🗨', x + 5, y - 20)
+                image(eye, x + 5, y - 20)
             if(s == int(globbies[i].shape.length/7))
-                text('👁‍🗨', x + 20, y)
+                image(eye, x + 20, y)
         }
     }
 }
