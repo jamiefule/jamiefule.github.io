@@ -76,7 +76,7 @@ function drawBlobGlobbies(){
         }
 
         //add mouth with a little jitter
-        text(mouth, xoff + random(-1,1), yoff + random(-1,1))
+        image(mouth, xoff + random(-1,1), yoff + random(-1,1))
 
         drawEyesBlobGlobbies(i)
     }
