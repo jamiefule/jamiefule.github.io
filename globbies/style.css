@@ -72,7 +72,7 @@ h1 span {
   
   @keyframes bounce {
     100% {
-      top: -20px;
+      top: -10px;
     }
 }
 /* End code from https://codemyui.com/wavy-text-bouncy-letter-animation/ */
