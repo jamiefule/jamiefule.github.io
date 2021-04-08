@@ -7,8 +7,8 @@ let mouth;
 
 function preload() {
     //setup eye and mouth paths
-   eye = loadImage('./assets/emojis/eye-small.png');
-   mouth = loadImage('./assets/emojis/mouth-small.png');
+   eye = loadImage('https://raw.githubusercontent.com/jamiefule/jamiefule.github.io/master/globbies/assets/emojis/eye-small.png');
+   mouth = loadImage('https://raw.githubusercontent.com/jamiefule/jamiefule.github.io/master/globbies/assets/emojis/mouth-small.png');
    
 }
 
