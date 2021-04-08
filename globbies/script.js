@@ -4,6 +4,10 @@ var blobglobbies = [];
 let hit;
 let eye;
 let mouth;
+let mousePoly = []
+var colliding = false;
+var collideIndex;
+var pressed = false;
 
 function preload() {
     //setup eye and mouth paths
@@ -47,21 +51,46 @@ function windowResized() {
     resizeCanvas(windowWidth * .8, windowHeight * .75);
   }
 
-function draw(){
-    //clear canvas each time
-    disp.background('white');
+  function mousePressed() {
+      pressed = true;
+    }
 
-    //draw floor
-    stroke(0);
-    strokeWeight(2)
-    line(disp.width * .1, disp.height * .7, disp.width * .9, disp.height * .7)
-
-    //draw line globbies
-    drawLineGlobbies();
-
-    //draw blob globbies
-    drawBlobGlobbies()
-
+    function mouseReleased() {
+        colliding = false;
+        pressed = false;
+        collideIndex = "";
+      }
+    
+      
+    function draw(){
+        //clear canvas each time
+        disp.background('white');
+        
+        //draw floor
+        stroke(0);
+        strokeWeight(2)
+        line(disp.width * .1, disp.height * .7, disp.width * .9, disp.height * .7)
+        
+        //draw line globbies
+        drawLineGlobbies();
+        
+        //draw blob globbies
+        drawBlobGlobbies()
+    
+    //linear globbie movement
+    for(var i = 0; i < globbies.length; i++){
+        if(collideCirclePoly(mouseX,mouseY, 5, globbies[i].vertices)){
+            colliding = true;
+            collideIndex = i;
+        } else{
+            if(!pressed)
+                colliding = false
+        }
+    
+        if(colliding && pressed){
+            globbies[collideIndex].pos = [mouseX, mouseY]
+        }
+    }
     
 }
 
@@ -70,6 +99,7 @@ function getRandomSign(){
         return 1;
     return -1;
 }
+
 
 
 

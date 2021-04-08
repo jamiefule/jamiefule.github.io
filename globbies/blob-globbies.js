@@ -63,12 +63,12 @@ function drawBlobGlobbies(){
             //randomly change stuff up
             if(int(random(100)) == 1){
                 blobglobbies[i].lerping = true;
-                console.log(blobglobbies[i].shape[s][0])
+               // console.log(blobglobbies[i].shape[s][0])
                 blobglobbies[i].shape[s][0] += random(-5,5) 
-                console.log(blobglobbies[i].shape[s][0] + "," + blobglobbies[i].lastShape[s][0])
+               // console.log(blobglobbies[i].shape[s][0] + "," + blobglobbies[i].lastShape[s][0])
                 blobglobbies[i].shape[s][1] += random(-5,5) 
                 blobglobbies[i].shape[s][2] += random(-5,5) 
-                console.log("----------------")
+               // console.log("----------------")
             }
 
             if(blobglobbies[i].lerping)
