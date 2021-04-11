@@ -10,7 +10,6 @@ body {
 body{
   overflow-x: hidden;
   overflow-y: hidden;
-  position: relative;
 }
 
 h1{
@@ -36,6 +35,7 @@ h1{
   }
   body {
     height: 120%;
+    position: relative;
   }
 }
 
