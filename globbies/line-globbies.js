@@ -1,11 +1,10 @@
-function createLineGlobbie(c, n, s, i, b, p, v){
-    var glob = {color: c,
-                numEyes: n, 
-                shape: s, 
-                intellegence: i,
-                bodyParts: b,
+function createLineGlobbie(p){
+    var glob = {color: color(random(255), random(255), random(255)),
+                numEyes: int(random(3))+1, 
+                intellegence: int(random(10)),
+                bodyParts: [],
                 pos: p,
-                vertices: v,
+                vertices: generateShape(30, 30),
                 center: []};
 
     globbies.push(glob);
@@ -60,6 +59,7 @@ function drawLineGlobbies(){
     for(var i = 0; i < globbies.length; i++){
         var firstx, firsty;
         var lastx, lasty;
+        var test = globbies;
         
         //set style
         fill(globbies[i].color)
@@ -67,18 +67,20 @@ function drawLineGlobbies(){
         stroke(lerpColor(globbies[i].color, color(50,50,50), 0.33));
 
         beginShape();
-        for(var s = 0; s < globbies[i].shape.length; s++){
+        for(var s = 0; s < globbies[i].vertices.length; s++){
             
-            var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0] + (noise(random(-5,5))*getRandomSign());
-            var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1] + (noise(random(-5,5))*getRandomSign());
+            var x = globbies[i].pos[0] - globbies[i].vertices[s]["x"] + (noise(random(-5,5)));
+            var y = globbies[i].pos[1] - globbies[i].vertices[s]["y"] + (noise(random(-5,5)));
 
 
             //update globbies point occasionally
             if(int(random(10)) % 7 == 0)
-                globbies[i].shape[s] = (globbies[i].pos[0] - x)+","+(globbies[i].pos[1] - y); 
+                globbies[i].vertices[s]["x"] = globbies[i].pos[0] - x; 
+                globbies[i].vertices[s]["y"] = globbies[i].pos[1] - y; 
+
 
             //set approx center
-            if(s == int(globbies[i].shape.length/2)){
+            if(s == int(globbies[i].vertices.length/2)){
                 globbies[i].center = (globbies[i].pos[0] + x)/2  + "," + (globbies[i].pos[1] + y)/2
             }
 
@@ -86,7 +88,7 @@ function drawLineGlobbies(){
                 firstx = x
                 firsty = y
             }
-            if(s == globbies[i].shape.length - 2){
+            if(s == globbies[i].vertices.length - 2){
                 lastx = x
                 lasty = y 
             }
@@ -108,30 +110,30 @@ function drawLineGlobbies(){
 //draw eyes on globbies
 function drawEyesLineGlobbies(i){
     var n = globbies[i].numEyes;
-    for(var s = 0; s < globbies[i].shape.length; s++){
-        var x = globbies[i].pos[0] - globbies[i].shape[s].split(',')[0];
-        var y = globbies[i].pos[1] - globbies[i].shape[s].split(',')[1];
+    for(var s = 0; s < globbies[i].vertices.length; s++){
+        var x = globbies[i].pos[0] - globbies[i].vertices[s]["x"];
+        var y = globbies[i].pos[1] - globbies[i].vertices[s]["y"];
         var center = globbies[i].center;
 
         if(n == 1){
-            if(s == int(globbies[i].shape.length/2))
+            if(s == int(globbies[i].vertices.length/2))
                 image(eye, x - 20, y + 20)
         }
 
         if(n == 2){
-            if(s == int(globbies[i].shape.length/3))
+            if(s == int(globbies[i].vertices.length/3))
                 image(eye, x - 20, y + 20)
-            if(s == int(globbies[i].shape.length/6))
+            if(s == int(globbies[i].vertices.length/6))
                 image(eye, x, y - 20)
         }
 
         if(n == 3){
-            // console.log("3, s: "+s+" len: " + globbies[i].shape.length )
-            if(s == int(globbies[i].shape.length/3))
+            // console.log("3, s: "+s+" len: " + globbies[i].vertices.length )
+            if(s == int(globbies[i].vertices.length/3))
                 image(eye, x - 20, y + 20)
-            if(s == int(globbies[i].shape.length/5))
+            if(s == int(globbies[i].vertices.length/5))
                 image(eye, x + 5, y - 20)
-            if(s == int(globbies[i].shape.length/7))
+            if(s == int(globbies[i].vertices.length/7))
                 image(eye, x + 20, y)
         }
     }
@@ -168,4 +170,27 @@ function polyPoint(vertices, px, py) {
   
   return collision;
   
+  }
+
+  function addPoints(i){
+      //pick a random spot
+    var r = random(0, globbies[i].vertices.length)
+
+    var first = globbies[i].verticies.slice(0, r);
+    var second = globbies[i].vertices.slice(r + 1);
+
+    //get last of first
+    var firstX = first[first.length][0]
+    var firstY = first[first.length][1]
+
+    //get first of second
+    var secondX = second[0][0];
+    var secondY = second[0][1];
+
+    var randomX = random(-10,10)
+    var randomY = random(-10,10)
+
+    first.push([secondX - firstX + randomX, secondY - firstY + randomY])
+
+    globbies[i].vertices = first.concat(second)
   }

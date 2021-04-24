@@ -10,6 +10,7 @@ var collideIndex;
 var collidingBlob = false;
 var collideIndexBlob;
 var pressed = false;
+var foods = []
 
 function preload() {
     //setup eye and mouth paths
@@ -31,14 +32,14 @@ function setup(){
    let g = random(255);
    let b = random(255);
    
-   createLineGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .1, disp.width * .3), random(disp.height * .69, disp.height * .9)], []);
+   createLineGlobbie([random(disp.width * .1, disp.width * .3), random(disp.height * .69, disp.height * .9)]);
 
     //setup second globbie
-    r = random(255);
-    g = random(255);
-    b = random(255);
+    // r = random(255);
+    // g = random(255);
+    // b = random(255);
     
-    createLineGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .3, disp.width * .6), random(disp.height * .69, disp.height * .9)], []);
+    //createLineGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .3, disp.width * .6), random(disp.height * .69, disp.height * .9)], []);
 
     //set up third globbie
    r = random(255);
@@ -55,6 +56,12 @@ function windowResized() {
 
   function mousePressed() {
       pressed = true;
+
+            //add food
+            if(!colliding && !collidingBlob){
+                createFood(mouseX, mouseY)
+            }
+
     }
 
     function mouseReleased() {
@@ -96,13 +103,20 @@ function windowResized() {
         if(colliding && pressed){
             globbies[collideIndex].pos = [mouseX, mouseY]
         }
+
+        //food collision
+        for(var l = 0; l < foods.length; l++){
+            if(collideCirclePoly(foods[l].pos[0], foods[l].pos[1], 10, globbies[i].vertices)){
+                eatFoods(l, i, globbies)
+                // addPoints(i)
+            }
+        }
     }
 
         //blobglobbie movement
         for(var i = 0; i < blobglobbies.length; i++){
             for(var j = 0; j < blobglobbies[i].shape.length; j++){
                if(collideCircleCircle(mouseX, mouseY, 5, blobglobbies[i].pos[0] - blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] - blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
-                    console.log("true")
                     collidingBlob = true;
                     collideIndexBlob = i;
                }
@@ -115,15 +129,62 @@ function windowResized() {
                 if(collidingBlob && pressed){
                     blobglobbies[collideIndexBlob].pos = [mouseX, mouseY]
                 }
+
+                //food collision
+                for(var l = 0; l < foods.length; l++){
+                    if(collideCircleCircle(foods[l].pos[0], foods[l].pos[1], 10, blobglobbies[i].pos[0] - blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] - blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+                        eatFoods(l, i, blobglobbies)
+                        addCircle(i)
+                    }
+                }
+
             }
         }
     
+        //draw foods
+        drawFoods()
 }
 
 function getRandomSign(){
     if(random(10) >= 5)
         return 1;
     return -1;
+}
+
+//add to the foods array 
+function createFood(x, y){
+    var foodTypes = ["🍓", "🍖", "🍄"]
+    var typeRandom = foodTypes[int(random(0,3))] 
+
+    var food = {
+        pos: [mouseX, mouseY],
+        type: typeRandom
+    }
+
+    foods.push(food);
+}
+
+function drawFoods(){
+    for(var i = 0; i < foods.length; i++){
+        text(foods[i].type, foods[i].pos[0], foods[i].pos[1])
+        
+        //make foods fall
+        foods[i].pos[1] += 2;
+
+        //kill foods that fall off screen
+        if(foods[i].pos[1] >= windowHeight - 100)
+            foods.splice(i, 1)
+    }
+
+}
+
+//kill food on function call
+function eatFoods(i, glob, arr){
+    if(foods[i].type == "🍄"){
+        arr[glob].color = color(random(255), random(255), random(255))
+    }
+
+    foods.splice(i,1);
 }
 
 
