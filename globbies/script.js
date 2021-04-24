@@ -7,6 +7,8 @@ let mouth;
 let mousePoly = []
 var colliding = false;
 var collideIndex;
+var collidingBlob = false;
+var collideIndexBlob;
 var pressed = false;
 
 function preload() {
@@ -57,8 +59,12 @@ function windowResized() {
 
     function mouseReleased() {
         colliding = false;
+        collidingBlob = false;
+
         pressed = false;
         collideIndex = "";
+        collideBlob = "";
+
       }
     
       
@@ -91,6 +97,26 @@ function windowResized() {
             globbies[collideIndex].pos = [mouseX, mouseY]
         }
     }
+
+        //blobglobbie movement
+        for(var i = 0; i < blobglobbies.length; i++){
+            for(var j = 0; j < blobglobbies[i].shape.length; j++){
+               if(collideCircleCircle(mouseX, mouseY, 5, blobglobbies[i].pos[0] - blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] - blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+                    console.log("true")
+                    collidingBlob = true;
+                    collideIndexBlob = i;
+               }
+
+               else{
+                if(!pressed)
+                    collidingBlob = false
+                }
+        
+                if(collidingBlob && pressed){
+                    blobglobbies[collideIndexBlob].pos = [mouseX, mouseY]
+                }
+            }
+        }
     
 }
 
