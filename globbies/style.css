@@ -1,5 +1,7 @@
 /* Begin Code From https://www.gradient-animator.com/ */
 body {
+  /* in case webkit stuff isnt working */
+    background-color: #b5fffd;
     background: linear-gradient(325deg, #ff7afa, #837aff, #e125ff, #c3ff92, #9ffff7, #f6f984);
     background-size: 1200% 1200%;
 
