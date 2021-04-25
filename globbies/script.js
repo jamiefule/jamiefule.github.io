@@ -95,38 +95,44 @@ function windowResized() {
 
         //blobglobbie movement
         for(var i = 0; i < blobglobbies.length; i++){
-            for(var j = 0; j < blobglobbies[i].shape.length; j++){
-               if(collideCircleCircle(mouseX, mouseY, 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
-                    collidingBlob = true;
-                    $(document).css('cursor', 'pointer');
-                    collideIndexBlob = i;
-               }
-
-               else{
-                if(!pressed)
-                    collidingBlob = false
-                }
-        
-                if(collidingBlob && pressed){
-                    blobglobbies[collideIndexBlob].pos = [mouseX, mouseY]
-                }
-
-                //food collision
-                for(var l = 0; l < foods.length; l++){
-                    if(collideCircleCircle(foods[l].pos[0], foods[l].pos[1], 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
-                        eatFoods(l, i, blobglobbies)
+            if(blobglobbies[i].alive != "ded"){
+                for(var j = 0; j < blobglobbies[i].shape.length; j++){
+                    if(collideCircleCircle(mouseX, mouseY, 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+                        collidingBlob = true;
+                        cursor('pointer')
+                        collideIndexBlob = i;
+                   }
+    
+                   else{
+                    if(!pressed){
+                        collidingBlob = false
+                        cursor(ARROW)
                     }
+                    }
+            
+                    if(collidingBlob && pressed){
+                        blobglobbies[collideIndexBlob].pos = [mouseX, mouseY]
+                    }
+    
+                    //food collision
+                    for(var l = 0; l < foods.length; l++){
+                        if(collideCircleCircle(foods[l].pos[0], foods[l].pos[1], 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+                            eatFoods(l, i, blobglobbies)
+                        }
+                    }
+    
                 }
-
             }
         }
     
         //apply gravity
         for(var i = 0; i < blobglobbies.length; i++){
-            if(!pressed && blobglobbies[i].pos[1] <= horizon){
-                blobglobbies[i].pos[1] += 5; 
-                blobglobbies[i].pos[0] += random(-5,5)
-            }
+            if(blobglobbies[i].alive != "ded"){
+                if(!pressed && blobglobbies[i].pos[1] <= horizon){
+                    blobglobbies[i].pos[1] += 5; 
+                    blobglobbies[i].pos[0] += random(-5,5)
+                }
+             }
         }
 
         //draw foods
@@ -157,6 +163,28 @@ function drawFoods(){
         //make foods fall
         foods[i].pos[1] += 2;
 
+        //logic for growing new globbie (limit 3)
+        if(foods[i].type == "🌱"){
+            var activeGlobs = 0;
+            for(var j = 0; j < blobglobbies.length; j++){
+                if(blobglobbies[j].alive != "ded")
+                    activeGlobs++;
+            }
+
+            //plant a new glob
+            if(activeGlobs < 3){
+                if(foods[i].pos[1] >= horizon + 50){
+                       //setup first globbie
+                        let r = random(255);
+                        let g = random(255);
+                        let b = random(255);
+                        
+                        createBlobGlobbie(int(random(3))+1, random(10), [foods[i].pos[0], foods[i].pos[1]]);
+                }
+            }
+
+        }
+
         //kill foods that fall off screen
         if(foods[i].pos[1] >= windowHeight - 100)
             foods.splice(i, 1)
@@ -174,7 +202,7 @@ function eatFoods(i, glob, arr){
         for(var j = 0; j < arr[glob].shape.length; j++){
             arr[glob].shape[j][0] = random(-10,10)
             arr[glob].shape[j][1] = random(-10,10)
-            arr[glob].shape[j][0] = random(5, 10)
+            arr[glob].shape[j][2] = random(10, 20)
         }
 
         arr[glob].lastShape = arr[glob].shape
@@ -192,6 +220,9 @@ function eatFoods(i, glob, arr){
     else if(foods[i].type == "💣"){
         splatter(glob)
     } 
+    else if(foods[i].type == "🔪"){
+        blobglobbies[glob].alive = "ded";
+    }
     
     else{
         addCircle(glob)
@@ -200,6 +231,10 @@ function eatFoods(i, glob, arr){
     foods.splice(i,1);
 }
 
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+  });
 
 
 
