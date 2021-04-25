@@ -223,6 +223,10 @@ function eatFoods(i, glob, arr){
     else if(foods[i].type == "🔪"){
         blobglobbies[glob].alive = "ded";
     }
+
+    else if(foods[i].type == "🍓"){
+        blobglobbies[glob].color = color(255, random(0,180), random(150,255));
+    }
     
     else{
         addCircle(glob)

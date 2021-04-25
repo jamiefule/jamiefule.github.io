@@ -18,6 +18,10 @@ function createBlobGlobbie(n, i, p){
 
     var glob = {color: color(r,g,b),
                 lerping: false,
+                moving: false,
+                moveTimer: random(0,300),
+                timeSinceMove: 0,
+                direction: .02 * getRandomSign(),
                 numEyes: n, 
                 shape: ls, 
                 lastShape: s,
@@ -88,6 +92,50 @@ function drawBlobGlobbies(){
                     shrinkDown(i, s)
                     globalCounter = 0;
                 }
+
+                //check if we should move a globbie
+                if(!blobglobbies[i].moving && blobglobbies[i].timeSinceMove >= blobglobbies[i].moveTimer){
+                    blobglobbies[i].moving = true; 
+                    blobglobbies[i].timeSinceMove = 0;
+                    //randomly change direction
+                    if(int(random(0,20)) % 2 == 0)
+                        blobglobbies[i].direction *= -1;
+
+                }
+                    if(blobglobbies[i].moving){
+                        //if too close to edge, change direction
+                        if(blobglobbies[i].pos[0] + 50 >= width || blobglobbies[i].pos[0] - 50 <= 0){
+                            blobglobbies[i].direction *= -1;
+                        }
+    
+                        blobglobbies[i].pos[0] += blobglobbies[i].direction;
+
+                        //add some Y direction noise in
+                        if(blobglobbies[i].pos[1] >= horizon || blobglobbies[i].pos[1] <= height){
+                            //only do this rarely
+                            if(int(random(0,100)) % 7 ==0){
+                                //stop globbies from going under screen
+                                if(blobglobbies[i].pos[1] + 50 >= height)
+                                    blobglobbies[i].pos[1] += -2
+                                else if(blobglobbies[i].pos[1] - 30 <= horizon)
+                                    blobglobbies[i].pos[1] += 2
+                                else
+                                    blobglobbies[i].pos[1] += int(random(-2,2))
+                            }
+                        }
+
+
+                        if(blobglobbies[i].timeSinceMove >= blobglobbies[i].moveTimer){
+                            blobglobbies[i].moving = false
+                            blobglobbies[i].timeSinceMove = 0;
+
+                            //set a new moveTimer length
+                            blobglobbies[i].moveTimer = random(50,300)
+                        }
+                    }
+
+                    
+
             }
             globalCounter++;
             
@@ -97,6 +145,7 @@ function drawBlobGlobbies(){
             drawEyesBlobGlobbies(i)
 
         }
+        blobglobbies[i].timeSinceMove++;
     }
 
 }
@@ -230,3 +279,5 @@ function splatter(i){
         blobglobbies[i].shape[j][2] -= random(10,20)
     }
 }
+
+
