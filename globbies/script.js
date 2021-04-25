@@ -66,6 +66,7 @@ function windowResized() {
         collideBlob = "";
 
       }
+
     
       
     function draw(){
@@ -128,6 +129,10 @@ function createFood(x, y){
         type: typeRandom
     }
 
+    if(keyIsDown(SHIFT)){
+        food.type = "🧪"
+    }
+
     foods.push(food);
 }
 
@@ -149,6 +154,25 @@ function drawFoods(){
 function eatFoods(i, glob, arr){
     if(foods[i].type == "🍄"){
         arr[glob].color = color(random(255), random(255), random(255))
+    }
+    else if(foods[i].type == "🧪"){
+        //shrink it up
+        for(var j = 0; j < arr[glob].shape.length; j++){
+            arr[glob].shape[j][0] = random(-10,10)
+            arr[glob].shape[j][1] = random(-10,10)
+            arr[glob].shape[j][0] = random(5, 10)
+        }
+
+        arr[glob].lastShape = arr[glob].shape
+        
+        //regen eyes
+        let eyes = []
+        
+        for(var k = 0; k < arr[glob].numEyes; k++){
+            eyes.push(int(random(0, arr[glob].shape.length)))
+        }
+
+        arr[glob].eyeNodes = eyes;
     }
 
     foods.splice(i,1);
