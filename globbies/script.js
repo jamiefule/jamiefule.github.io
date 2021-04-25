@@ -25,7 +25,7 @@ $(document).on("click", "#paint-selector input[type='button']", function(){
 
 $(document).ready(function(){
     if(!/chrome/i.test( navigator.userAgent )){
-        $("body").css("background", "initial")
+        $("body").css("background", "#b5fffd")
        }
 })
 
