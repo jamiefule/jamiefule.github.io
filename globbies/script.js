@@ -28,20 +28,13 @@ function setup(){
     smooth();
 
    //setup first globbie
-   let r = random(255);
-   let g = random(255);
-   let b = random(255);
+   r = random(255);
+   g = random(255);
+   b = random(255);
    
-   createLineGlobbie([random(disp.width * .1, disp.width * .3), random(disp.height * .69, disp.height * .9)]);
+   createBlobGlobbie(int(random(3))+1, random(10), [random(disp.width * .3, disp.width * .6), random(disp.height * .69, disp.height * .9)]);
 
-    //setup second globbie
-    // r = random(255);
-    // g = random(255);
-    // b = random(255);
-    
-    //createLineGlobbie(color(r, g, b), int(random(3))+1, generateShape(30, 30), random(10), [], [random(disp.width * .3, disp.width * .6), random(disp.height * .69, disp.height * .9)], []);
-
-    //set up third globbie
+    //set up second globbie
    r = random(255);
    g = random(255);
    b = random(255);
@@ -84,34 +77,8 @@ function windowResized() {
         strokeWeight(2)
         line(disp.width * .1, disp.height * .7, disp.width * .9, disp.height * .7)
         
-        //draw line globbies
-        drawLineGlobbies();
-        
         //draw blob globbies
         drawBlobGlobbies()
-    
-    //linear globbie movement
-    for(var i = 0; i < globbies.length; i++){
-        if(collideCirclePoly(mouseX,mouseY, 5, globbies[i].vertices)){
-            colliding = true;
-            collideIndex = i;
-        } else{
-            if(!pressed)
-                colliding = false
-        }
-    
-        if(colliding && pressed){
-            globbies[collideIndex].pos = [mouseX, mouseY]
-        }
-
-        //food collision
-        for(var l = 0; l < foods.length; l++){
-            if(collideCirclePoly(foods[l].pos[0], foods[l].pos[1], 10, globbies[i].vertices)){
-                eatFoods(l, i, globbies)
-                // addPoints(i)
-            }
-        }
-    }
 
         //blobglobbie movement
         for(var i = 0; i < blobglobbies.length; i++){

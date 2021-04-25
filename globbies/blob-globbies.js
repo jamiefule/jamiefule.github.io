@@ -125,33 +125,6 @@ function drawEyesBlobGlobbies(i){
         image(eye, x, y)
 
     }
-
-
-    // var n = blobglobbies[i].numEyes;
-    // for(var s = 0; s < blobglobbies[i].shape.length; s++){
-    //     var center = blobglobbies[i].pos;
-
-    //     if(n == 1){
-    //         if(s == int(blobglobbies[i].shape.length/2))
-    //     }
-
-    //     if(n == 2){
-    //         if(s == int(blobglobbies[i].shape.length/3))
-    //             image(eye, x, y)
-    //         if(s == int(blobglobbies[i].shape.length/6))
-    //             image(eye, x, y)
-    //     }
-
-    //     if(n == 3){
-    //         // console.log("3, s: "+s+" len: " + blobglobbies[i].shape.length )
-    //         if(s == int(blobglobbies[i].shape.length/3))
-    //             image(eye, x, y)
-    //         if(s == int(blobglobbies[i].shape.length/5))
-    //             image(eye, x, y)
-    //         if(s == int(blobglobbies[i].shape.length/7))
-    //             image(eye, x, y)
-    //     }
-//    }
 }
 
 function addCircle(i){
