@@ -169,6 +169,12 @@ function drawFoods(){
         //make foods fall
         foods[i].pos[1] += 2;
 
+        //kill foods that fall off screen
+        if(foods[i].pos[1] >= windowHeight - 100){
+            foods.splice(i, 1)
+            return;
+        }
+
         //logic for growing new globbie (limit 3)
         if(foods[i].type == "🌱"){
             var activeGlobs = 0;
@@ -191,14 +197,10 @@ function drawFoods(){
 
         }
 
-        //kill foods that fall off screen
-        if(foods[i].pos[1] >= windowHeight - 100)
-            foods.splice(i, 1)
     }
 
 }
 
-//kill food on function call
 function eatFoods(i, glob, arr){
     if(foods[i].type == "🍄"){
         arr[glob].color = color(random(255), random(255), random(255))
