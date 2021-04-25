@@ -11,6 +11,17 @@ var collidingBlob = false;
 var collideIndexBlob;
 var pressed = false;
 var foods = []
+var horizon = 0;
+var selectedEmoji = "🍖";
+
+//select emoji
+$(document).on("click", "#paint-selector input[type='button']", function(){
+    selectedEmoji = $(this).val()
+
+    //clear all classes
+    $("#paint-selector input").removeClass('selected');
+    $(this).addClass("selected")
+});
 
 function preload() {
     //setup eye and mouth paths
@@ -77,6 +88,7 @@ function windowResized() {
         stroke(0);
         strokeWeight(2)
         line(disp.width * .1, disp.height * .7, disp.width * .9, disp.height * .7)
+        horizon = disp.height * .7;
         
         //draw blob globbies
         drawBlobGlobbies()
@@ -109,6 +121,14 @@ function windowResized() {
             }
         }
     
+        //apply gravity
+        for(var i = 0; i < blobglobbies.length; i++){
+            if(!pressed && blobglobbies[i].pos[1] <= horizon){
+                blobglobbies[i].pos[1] += 5; 
+                blobglobbies[i].pos[0] += random(-5,5)
+            }
+        }
+
         //draw foods
         drawFoods()
 }
@@ -121,16 +141,10 @@ function getRandomSign(){
 
 //add to the foods array 
 function createFood(x, y){
-    var foodTypes = ["🍓", "🍖", "🍄"]
-    var typeRandom = foodTypes[int(random(0,3))] 
 
     var food = {
         pos: [mouseX, mouseY],
-        type: typeRandom
-    }
-
-    if(keyIsDown(SHIFT)){
-        food.type = "🧪"
+        type: selectedEmoji
     }
 
     foods.push(food);

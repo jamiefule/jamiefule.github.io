@@ -3,10 +3,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./style.css"/>
     <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="line-globbies.js"></script>
     <script src="blob-globbies.js"></script>
     <script src="script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <!--
       This enables the p5.js core library (automatically added within the p5.js web editor).
@@ -29,5 +29,12 @@
         <span class="odd">e</span>
         <span class="even">s</span>
     </h1>
+    <div id="paint-selector">
+      <input type="button" id="potion" value="🧪"/>
+      <input type="button" id="mushroom" value="🍄"/>
+      <input type="button" id="meat" class="selected" value="🍖"/>
+      <input type="button" id="strawberry" value="🍓"/>
+      <input type="button" id="bomb" value="💣"/>
+    </div>
   </body>
 </html>
