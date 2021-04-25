@@ -23,6 +23,12 @@ $(document).on("click", "#paint-selector input[type='button']", function(){
     $(this).addClass("selected")
 });
 
+$(document).ready(function(){
+    if(!/chrome/i.test( navigator.userAgent )){
+        $(body).css("background", "initial")
+       }
+})
+
 function preload() {
     //setup eye and mouth paths
    eye = loadImage('https://raw.githubusercontent.com/jamiefule/jamiefule.github.io/master/globbies/assets/emojis/eye-small.png');
