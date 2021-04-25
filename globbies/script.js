@@ -96,8 +96,9 @@ function windowResized() {
         //blobglobbie movement
         for(var i = 0; i < blobglobbies.length; i++){
             for(var j = 0; j < blobglobbies[i].shape.length; j++){
-               if(collideCircleCircle(mouseX, mouseY, 5, blobglobbies[i].pos[0] - blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] - blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+               if(collideCircleCircle(mouseX, mouseY, 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
                     collidingBlob = true;
+                    $(document).css('cursor', 'pointer');
                     collideIndexBlob = i;
                }
 
@@ -112,9 +113,8 @@ function windowResized() {
 
                 //food collision
                 for(var l = 0; l < foods.length; l++){
-                    if(collideCircleCircle(foods[l].pos[0], foods[l].pos[1], 10, blobglobbies[i].pos[0] - blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] - blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
+                    if(collideCircleCircle(foods[l].pos[0], foods[l].pos[1], 10, blobglobbies[i].pos[0] + blobglobbies[i].shape[j][0], blobglobbies[i].pos[1] + blobglobbies[i].shape[j][1], blobglobbies[i].shape[j][2])){
                         eatFoods(l, i, blobglobbies)
-                        addCircle(i)
                     }
                 }
 
@@ -168,8 +168,8 @@ function drawFoods(){
 function eatFoods(i, glob, arr){
     if(foods[i].type == "🍄"){
         arr[glob].color = color(random(255), random(255), random(255))
-    }
-    else if(foods[i].type == "🧪"){
+        addCircle(glob)
+    }else if(foods[i].type == "🧪"){
         //shrink it up
         for(var j = 0; j < arr[glob].shape.length; j++){
             arr[glob].shape[j][0] = random(-10,10)
@@ -187,6 +187,14 @@ function eatFoods(i, glob, arr){
         }
 
         arr[glob].eyeNodes = eyes;
+    } 
+    
+    else if(foods[i].type == "💣"){
+        splatter(glob)
+    } 
+    
+    else{
+        addCircle(glob)
     }
 
     foods.splice(i,1);

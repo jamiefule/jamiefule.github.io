@@ -81,7 +81,7 @@ function drawBlobGlobbies(){
 
             if(blobglobbies[i].lerping)
             lerpGlobbie(i)
-            
+
             if(globalCounter >= 1000){
                 shrinkDown(i, s)
                 globalCounter = 0;
@@ -210,4 +210,20 @@ function shrinkDown(i, s){
         blobglobbies[i].shape[s][1] -= 3;
     }
     blobglobbies[i].shape[s][2] -= 1;
+}
+
+function splatter(i){
+    for(var j = 0; j < blobglobbies[i].shape.length; j++){
+        if(Math.sign(blobglobbies[i].shape[j][0]) == -1)
+            blobglobbies[i].shape[j][0] += random(-20,0)
+        else
+            blobglobbies[i].shape[j][0] += random(0,20)
+
+        if(Math.sign(blobglobbies[i].shape[j][1]) == -1)
+            blobglobbies[i].shape[j][1] += random(-20,0)
+        else
+            blobglobbies[i].shape[j][1] += random(0,20)  
+             
+        blobglobbies[i].shape[j][2] -= random(10,20)
+    }
 }
