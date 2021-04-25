@@ -185,7 +185,7 @@ function drawFoods(){
 
             //plant a new glob
             if(activeGlobs < 3){
-                if(foods[i].pos[1] >= horizon + 50){
+                if(foods[i].pos[1] >= horizon + 50 && foods[i].pos[1] <= horizon + 100){
                        //setup first globbie
                         let r = random(255);
                         let g = random(255);
