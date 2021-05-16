@@ -145,9 +145,9 @@ h1{
 #bgBlob {
   position: absolute;
   bottom: 0px;
-  right : 0px;
+  right: -40px;
   z-index: 1;
-  height: 405px;
+  height: 450px;
   width: auto;
 }
 
