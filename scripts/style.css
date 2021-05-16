@@ -51,6 +51,7 @@ h1{
   bottom: 65px;
   z-index: 5;
   text-align: left;
+  box-shadow: 4px 4px 4px rgba(68, 68, 68, 0.18)
 }
 
 .content{
