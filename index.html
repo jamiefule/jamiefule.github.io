@@ -2,41 +2,61 @@
 <!-- WIP Page, expect it to look bad -->
 <head>
     <title>Jamie Fule's Github</title>
-    <link rel="stylesheet" href="scripts/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scripts/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <link href=https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet" />
     <script type="text/javascript" src="./scripts/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- MDB JS -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
     <div id="bgImage"></div>
     <div id="translucent"></div>
+    <div class="banner">
+        <h1>Jamie Fule's Github</h1>
+        <div id="art-toggle-container" class="form-check form-switch">
+            <table id="toggle-table">
+                <tr>
+                    <td><p class="professional-label" for="flexSwitchCheckDefault">Professional</p></td>
+                    <td id="button-td"><input id="art-toggle" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked/></td>
+                    <td><p class="art-label" for="flexSwitchCheckDefault">Art</p></td>
+                </tr>
+            </table>
+            
 
-    <h1>Jamie Fule's Github</h1>
+
+        </div>
+    </div>
     <div class="content">
         <p>Hello, this page is a work in progress to showcase my web projects ~Jamie</p>
         <br>
         <h3>Current Projects (Art 250)</h3>
-                        <table id="project-container">
+        <table id="project-container" class="art">
             <tr>
                 <td>
                     <div class="pages" style="background-color: #F19863;">
-                            <a href="./globbies">Globbies</a>
+                            <a href="./art-content/globbies/index.html">Globbies</a>
                     </div>
                 </td>
                 <td>
                     <div class="pages" style="background-color: #E25D75;">
-                            <a href="./the_lonely_ghost"> Bitsy Game</a>
+                            <a href="./art-content//the_lonely_ghost/index.html"> Bitsy Game</a>
                     </div>
                 </td>
-
             </tr>
             <tr>
                 <td>
                         <div class="pages" style="background-color: #7ACF56;">
-                                <a href="./twine">Twine Narrative</a>
+                                <a href="./art-content/twine/index.html">Twine Narrative</a>
                         </div>
                 </td>
                 <td>
@@ -48,16 +68,16 @@
         </table>
         <hr>                                                  
         <h3>New Media Art Projects</h3>
-        <table id="project-container">
+        <table id="project-container" class="art">
             <tr>
                 <td>
                     <div class="pages" style="background-color: #E25D75;">
-                            <a href="final-art/index.html">Online Learning</a>
+                            <a href="./art-content/final-art/index.html">Online Learning</a>
                     </div>
                 </td>
                 <td>
                     <div class="pages" style="background-color: #7ACF56;">
-                            <a href="environments/index.html">Interactive Environments </a>
+                            <a href="./art-content/environments/index.html">Interactive Environments </a>
                     </div>
                 </td>
 
@@ -65,25 +85,22 @@
             <tr>
                 <td>
                         <div class="pages" style="background-color: #419D86;">
-                                <a href="narrative/index.html">Sleepy Adventure</a>
+                                <a href="./art-content/narrative/index.html">Sleepy Adventure</a>
                         </div>
                 </td>
                 <td>
                     <div class="pages" style="background-color: #F19863;">
-                            <a href="plantFanPage/index.html">Plant Fan Page</a>
+                            <a href="./art-content/plantFanPage/index.html">Plant Fan Page</a>
                     </div>
                 </td>
             </tr>
             <tr>
                <td>
                   <div class="pages" style="background-color: #7ACF56;;">
-                     <a href="DoYouBelieve/index.html">Fortune-Teller (Partially Retired)</a>
+                     <a href="./art-content/DoYouBelieve/index.html">Fortune-Teller (Partially Retired)</a>
                   </div>
                 </td>
             </tr>
         </table>
-        
     </div>
-
-
 </body>

@@ -11,12 +11,12 @@ body{
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
-  margin: 0;
-  padding: 5px 25px;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 h1{
-  color: white;
+  color: #0B103F;
 }
 
 .content{
@@ -73,8 +73,41 @@ h1{
   z-index: -1;
   backdrop-filter: blur(6px);
 }
+.banner{
+  background-color: rgba(255, 255, 255, 0.7); 
+  width: 100%;
+}
+
+#art-toggle-container{
+  color: #0B103F;
+  width: 100%;
+}
+
+#toggle-table{
+  padding:0px;
+  width: auto;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+#toggle-table td{
+  width: auto;
+}
+
+#button-td{
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+#art-toggle{
+  position: absolute;
+  top: 0px;
+}
+
+
 #bgImage {
-  background-image: url('../assets/bg.png');
+  background-image: url('../art-content/assets/bg.png');
   animation: spinBG 160s linear infinite;
   position: absolute;
     top: -200%;
@@ -103,4 +136,14 @@ table{
 table td{
   width: 33%;
   
+}
+
+/* toggle color customize */
+
+.form-check-input[type=checkbox]:checked{
+  background-color: #8934CF !important;
+}
+
+.form-switch .form-check-input:checked[type=checkbox]:after {
+  background-color: #8934CF !important;
 }
