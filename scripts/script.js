@@ -10,6 +10,14 @@ $(document).on('change', "#art-toggle", function(){
         $(".professional").css("display", "none");
         $(".professional-title").css("display", "none");
 
+        //return background
+        $("#bgImage").css("display", "block");
+        $("#translucent").css("background-color", "rgba(27, 61, 206, 0.3)");
+        $("#bgBlob").css("display", "none");
+        $(".info-container").css("display", "none");
+
+
+
     }
 
     //if professional mode
@@ -21,5 +29,14 @@ $(document).on('change', "#art-toggle", function(){
         //show professional
         $(".professional").css("display", "table");
         $(".professional-title").css("display", "block");
+
+        //change bg
+        $("#bgImage").css("display", "none");
+        $("#translucent").css("background-color", "#EFEFEF");
+        $("#bgBlob").css("display", "block");
+        $(".info-container").css("display", "block");
+
+
+
     }
 })

@@ -20,6 +20,7 @@
 
 <body>
     <div id="bgImage"></div>
+    <img id="bgBlob" src="./art-content/assets/blob.png" style="display:none;"/>
     <div id="translucent"></div>
     <div class="banner">
         <h1>Jamie Fule's Github</h1>
@@ -37,7 +38,6 @@
         </div>
     </div>
     <div class="content">
-        <p class="art-title">Hello, this page is a work in progress to showcase my web art projects ~Jamie</p>
         <br>
         <h3 class="art-title">Current Projects (Art 250)</h3>
         <table id="project-container" class="art">
@@ -71,24 +71,24 @@
             <tr>
                 <td>
                     <div class="pages" style="background-color: #F19863;">
-                        <a href="">Coming Soon...</a>
+                        <a href="" class="btn btn-primary">Coming Soon...</a>
                     </div>
                 </td>
                 <td>
                     <div class="pages" style="background-color: #E25D75;">
-                        <a href="">Coming Soon...</a>
+                        <a href="" class="btn btn-light active">Coming Soon...</a>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
                         <div class="pages" style="background-color: #7ACF56;">
-                            <a href="">Coming Soon...</a>
+                            <a href="" class="btn btn-light active">Coming Soon...</a>
                         </div>
                 </td>
                 <td>
                     <div class="pages" style="background-color: #419D86;">
-                        <a href=""> Coming Soon...</a>
+                        <a href="" class="btn btn-primary"> Coming Soon...</a>
                     </div>
                 </td>
             </tr>
@@ -129,5 +129,19 @@
                 </td>
             </tr>
         </table>
+    </div>
+    <!-- info div -->
+    <div class="info-container" style="display:none;">
+        <table id="my-info">
+            <tr>
+                <th id="info-name">Jamie Fule</th>
+                <th colspan="2"><img id="self-portrait" src="./art-content/assets/photo.jpg" alt="Self Portrait of Jamie Fule"></th>
+            </tr>
+        </table>
+        <div id="info-links">
+            <i class="fab fa-linkedin fa-2x"></i><a href="https://www.linkedin.com/in/jamiefule/" target="_blank">/in/jamiefule/</a><br>
+            <i class="fab fa-github fa-2x"></i><a href="https://github.com/jamiefule" target="_blank">/jamiefule/</a><br>
+            <i class="fas fa-file fa-2x"></i><a href="./art-content/assets/Jamie Fule Resume.pdf" target="_blank"> Resume</a><br>
+        </div>
     </div>
 </body>

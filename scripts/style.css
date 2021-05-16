@@ -17,19 +17,54 @@ body{
 
 h1{
   color: #0B103F;
+  padding-left: 5px;
+}
+
+#info-name{
+  width: 100%;
+  position: absolute;
+  left: 15px;
+}
+
+#my-info{
+  width: 100%;
+}
+
+#info-links{
+  position:absolute;
+  bottom: 10px;
+  padding-left: 10px;
+}
+
+#info-links i{
+  padding-right: 10px;
+}
+
+.info-container{
+  background-color: white;
+  border-radius: 5px;
+  height: 260px;
+  width: 230px;
+  position: absolute;
+  right: 35px;
+  bottom: 65px;
+  z-index: 5;
+  text-align: left;
 }
 
 .content{
   background-color: rgba(255, 255, 255, 0.8); 
   text-align: center;
-  border:solid 1px;
-  border-color:#ffe2f5;
-  width: 66%;
+  width: 50%;
   margin: auto;
   border-radius: 5px;
   padding-bottom: 30px;
   margin-top: 165px; 
+  box-shadow: 4px 4px 4px rgba(68, 68, 68, 0.6);
+}
 
+.project-container{
+  width: 85%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -77,6 +112,7 @@ h1{
   background-color: rgba(255, 255, 255, 0.7); 
   width: 100%;
   padding-bottom: 1px;
+  box-shadow: 4px 4px 4px rgba(68, 68, 68, 0.6);
 }
 
 #art-toggle-container{
@@ -106,18 +142,36 @@ h1{
   top: 0px;
 }
 
+#bgBlob {
+  position: absolute;
+  bottom: 0px;
+  right : 0px;
+  z-index: 1;
+  height: 405px;
+  width: auto;
+}
+
+#self-portrait{
+  border-radius: 50%;
+  z-index: 5;
+  height: 100px;
+  width: auto; 
+  top: 15px;
+  right: 10px;
+  position: absolute;
+}
 
 #bgImage {
   background-image: url('../art-content/assets/bg.png');
   animation: spinBG 160s linear infinite;
   position: absolute;
-    top: -200%;
-    left: -200%;
-    height: 600%; 
-    width: 600%;
-    min-width: 500%;
-    min-height: 500%;
-    z-index: -2;
+  top: -200%;
+  left: -200%;
+  height: 600%; 
+  width: 600%;
+  min-width: 500%;
+  min-height: 500%;
+  z-index: -2;
 }
 
 @keyframes spinBG {
@@ -147,4 +201,8 @@ table td{
 
 .form-switch .form-check-input:checked[type=checkbox]:after {
   background-color: #8934CF !important;
+}
+
+.btn-light:hover{
+  background-color: #b0b0b0 !important;
 }
