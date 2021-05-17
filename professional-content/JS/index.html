@@ -13,12 +13,13 @@
 
 		<!-- my files -->
 		<script type="text/javascript" src="./scripts/setup.js"></script>
-		<link rel="stylesheet" href="./scripts/style.css"/>
+		<link id="customStyle" rel="stylesheet" href="./scripts/style.css"/>
 	</head>
 
 	<body>
 		<div id="banner">
 			<h1>Weather</h1>
+			<input id="location" type="text" placeholder="Zip Code"/>
 		</div>
 		<div class="content">
 			<table id="weather-container">
@@ -26,18 +27,49 @@
 					<td class="card-container" id="wind-container">
 						<div class="card" id="wind-card">
 							<h3>Wind</h3>
+							<i class="fas fa-wind fa-4x main-icon"></i>
 						</div>
 					</td>
 					<td class="card-container" id="humidity-container">
 						<div class="card" id="humidity-card">
 							<h3>Humidity</h3>
+							<i class="fas fa-tint fa-lg main-icon"></i>
+							<i class="fas fa-tint fa-3x main-icon"></i>
 						</div>
 					</td>
 				</tr>
 				<tr id="forecast-row">
 					<td colspan=2 class="card-container" id="forecast-container">
 						<div class="card" id="forecast-card">
-							<h3>Forecast</h3>
+							<table id="day-container">
+								<tr>
+									<td id="title-card">
+										<h3>Forecast</h3>
+										<i class="fas fa-cloud-sun-rain fa-4x main-icon"></i>
+									</td>
+									<td id="sun">
+										<h5 class="day-title">Sunday</h5>
+									</td>
+									<td id="mon">
+										<h5 class="day-title">Monday</h5>
+									</td>
+									<td id="tue">
+										<h5 class="day-title">Tuesday</h5>
+									</td>
+									<td id="wed">
+										<h5 class="day-title">Wednesday</h5>
+
+									<td id="thu">
+										<h5 class="day-title">Thursday</h5>
+									</td>
+									<td id="fri">
+										<h5 class="day-title">Friday</h5>
+									</td>
+									<td id="sat">
+										<h5 class="day-title">Saturday</h5>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</td>
 				</tr>
