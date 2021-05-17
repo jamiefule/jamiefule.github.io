@@ -10,8 +10,9 @@ window.onload = function () {
         lat = data.latitude;
         long = data.longitude;
         checkWindow()
+        populateWeeklyForcast()
     });
-
+    
 };
 
 $(window).resize(function(){
@@ -19,9 +20,9 @@ $(window).resize(function(){
 })
 
 function checkWindow(){
-    if ($(window).width() < 1515) {
-
-        if ($(window).width() < 910) {
+    if ($(window).width() < 1400) {
+        //if the user's screen size can't meet minimum requirements
+        if ($(window).width() < 780) {
             $(".card").css("display", "none");
             if(!$("#warning-message").length || $("#warning-message").css("display") == "none")
                 $("#banner").after("<p id='warning-message'>Sorry, your screen size is unsupported</p>")
@@ -30,82 +31,17 @@ function checkWindow(){
             $("#warning-message").css("display", "none");
         }
 
-        $("#day-container").empty()
-        $("#day-container").append(`
-            <tr>
-            <td id="title-card">
-                <h3>Forecast</h3>
-                <i class="fas fa-cloud-sun-rain fa-4x main-icon"></i>
-            </td>
-            <td class="extra-space"></td>
-            <td id="sun">
-                <h5 class="day-title">Sunday</h5>
-            </td>
-            <td id="mon">
-                <h5 class="day-title">Monday</h5>
-            </td>
-            <td id="tue">
-                <h5 class="day-title">Tuesday</h5>
-            </td>
-            </tr>
-            <tr>
-            <td class="extra-space"></td>
-            <td id="wed">
-                <h5 class="day-title">Wednesday</h5>
+        $(".break, .spacer").css("display", "inline-table");
+        $("#day-container div").css("width", "17%")
 
-            <td id="thu">
-                <h5 class="day-title">Thursday</h5>
-            </td>
-            <td id="fri">
-                <h5 class="day-title">Friday</h5>
-            </td>
-            <td id="sat">
-                <h5 class="day-title">Saturday</h5>
-            </td>
-        </tr>
-            `);
-            $("#day-container td").css("width", "20%").css("height", "190px");
-            $("#forecast-card").css("height", "425px")
-            $("#day-container tr:first td").css("padding-bottom", "10px")
-            $(".extra-space").css("width", "5%")
 
         //undo changes
      } else{
-        $("#day-container").empty()
-        $("#day-container").append(`
-            <table id="day-container">
-            <tr>
-                <td id="title-card">
-                    <h3>Forecast</h3>
-                    <i class="fas fa-cloud-sun-rain fa-4x main-icon"></i>
-                </td>
-                <td id="sun">
-                    <h5 class="day-title">Sunday</h5>
-                </td>
-                <td id="mon">
-                    <h5 class="day-title">Monday</h5>
-                </td>
-                <td id="tue">
-                    <h5 class="day-title">Tuesday</h5>
-                </td>
-                <td id="wed">
-                    <h5 class="day-title">Wednesday</h5>
+        $(".break, .spacer").css("display", "none");
+        $("#day-container div").css("width", "calc(12.5% - 20px")
 
-                <td id="thu">
-                    <h5 class="day-title">Thursday</h5>
-                </td>
-                <td id="fri">
-                    <h5 class="day-title">Friday</h5>
-                </td>
-                <td id="sat">
-                    <h5 class="day-title">Saturday</h5>
-                </td>
-            </tr>
-        </table>
-        `);
-        $("#forecast-card").css("height", "210px")
     }
-    populateWeeklyForcast()
+
 }
 
 function populateWeeklyForcast(){
