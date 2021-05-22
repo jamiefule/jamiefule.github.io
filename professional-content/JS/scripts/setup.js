@@ -1,6 +1,7 @@
 //global variables
 var lat;
-var long;
+var lon;
+var weather;
 
 window.onload = function () {
     //get approx user location
@@ -8,7 +9,7 @@ window.onload = function () {
     $.getJSON('https://ipgeolocation.abstractapi.com/v1/?api_key=' + apiKey, function(data) {
         console.log(data)
         lat = data.latitude;
-        long = data.longitude;
+        lon = data.longitude;
         checkWindow()
         populateWeeklyForcast()
     });
@@ -33,7 +34,8 @@ function checkWindow(){
 
         $(".break, .spacer").css("display", "inline-table");
         $("#day-container div").css("width", "17%")
-
+        $("#humidity-container i").css("display", "block")
+        $("#loading-row").css("top", "30%").css("left", "calc(50% - 45px");
 
         //undo changes
      } else{
@@ -54,23 +56,31 @@ function populateWeeklyForcast(){
     //get the day number of the year
     var numDays =  Math.floor((d - y) / (24 * 60 * 60 * 1000)); 
     var week = Math.ceil(( d.getDay() + 1 + numDays) / 7);   
-
-    var monStart = getDateOfISOWeek(week, y.getFullYear());
-    monStart.setDate(monStart.getDate() - 1)
-    var temp = monStart;
-
+    var temp = d;
     //append to table cells
     for(var i = 0; i < 7; i++){
         //gets day of week like 'mon', 'tue', etc.
-        let dayOfWeek = temp.toString().split(' ')[0].toLowerCase();
-        $("#" + dayOfWeek).append("<p class='dayOfMonth'>-" + months[temp.getMonth()] + " " + temp.getDate() + "-</p>")
-
-        if(d.getDate() == temp.getDate()){
-            $("#" + dayOfWeek + " .dayOfMonth").css("color", "#F06C9B").css("font-weight", "bold")
-        }
+        let dayOfWeek = temp.toLocaleDateString('en-US', { weekday: 'long' });
+        console.log(dayOfWeek)
+        $("#day-" + (i+1)).append("<p class='dayOfMonth'>-" + months[temp.getMonth()] + " " + temp.getDate() + "-</p>")
+        $("#day-" + (i+1) + " h5").text(dayOfWeek)
 
         temp.setDate(temp.getDate() + 1)
     }
+
+    $.ajax("http://www.7timer.info/bin/api.pl?lon=" + lon + "&lat=" + lat +"&product=civillight&output=json",
+        {
+            success: function (data) {
+                data = JSON.parse(data)
+                console.log(data);
+                for(var i = 0; i < 7; i++){
+                    $("#day-" + (i+1)).append("<p class='weather-report'>" + weatherCleanup(data.dataseries[i].weather)+ "</p>")
+            
+                }
+                //remove loading gif
+                $("#loading-row").css("display", "none")
+        }   
+    });
 
 }
 
@@ -84,4 +94,24 @@ function getDateOfISOWeek(w, y) {
     else
         ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
     return ISOweekStart;
+}
+
+function weatherCleanup(s){
+    switch(s){
+        case "clear":
+            return "Clear";
+        case "cloudy":
+            return "Cloudy";
+        case "lightrain":
+            return "Light Rain";
+        case "rain":
+            return "Rain";
+        case "pcloudy":
+            return "Partly Cloudy";
+        case "snow":
+            return "Snow"
+        default:
+            return s;
+
+    }
 }

@@ -93,7 +93,7 @@ h1, h3{
     padding-left: 30px;
 }
 .fa-tint{
-    padding-left: 60px;
+    padding-left: 60px !important;
     color: #F06C9B;
 }
 .fa-tint.fa-lg{
@@ -152,4 +152,26 @@ h1, h3{
 
 .dayOfMonth{
     text-align: center;
+}
+
+.today{
+    color: #F06C9B;
+    font-weight: bold;
+}
+
+.weather-report{
+    text-align: center;
+}
+
+#loading-row{
+    display: contents;
+    width: 100%;
+    height: 100%;
+}
+
+#loading-row img{
+    z-index: 99;
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% - 75px);;
 }
