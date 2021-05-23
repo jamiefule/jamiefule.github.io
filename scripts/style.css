@@ -99,7 +99,7 @@ h1{
 }
 
 #translucent {
-  background-color: rgba(27, 61, 206, 0.3); 
+  background-color: #EFEFEF; 
   position: absolute;
   top: 0;
   left: 0;
@@ -178,6 +178,7 @@ h1{
   min-width: 500%;
   min-height: 500%;
   z-index: -2;
+  display: none;
 }
 
 @keyframes spinBG {

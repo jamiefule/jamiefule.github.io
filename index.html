@@ -20,7 +20,7 @@
 
 <body>
     <div id="bgImage"></div>
-    <img id="bgBlob" src="./art-content/assets/blob.svg" style="display:none;"/>
+    <img id="bgBlob" src="./art-content/assets/blob.svg"/>
     <div id="translucent"></div>
     <div class="banner">
         <h1>Jamie Fule</h1>
@@ -28,7 +28,7 @@
             <table id="toggle-table">
                 <tr>
                     <td><p class="professional-label" for="flexSwitchCheckDefault">Professional</p></td>
-                    <td id="button-td"><input id="art-toggle" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked/></td>
+                    <td id="button-td"><input id="art-toggle" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/></td>
                     <td><p class="art-label" for="flexSwitchCheckDefault">Art</p></td>
                 </tr>
             </table>
@@ -39,8 +39,8 @@
     </div>
     <div class="content">
         <br>
-        <h3 class="art-title">Current Projects (Art 250)</h3>
-        <table id="project-container" class="art">
+        <h3 class="art-title" style="display:none;">Current Projects (Art 250)</h3>
+        <table id="project-container" class="art"  style="display:none;">
             <tr>
                 <td>
                     <div class="pages" style="background-color: #F19863;">
@@ -66,8 +66,8 @@
                 </td>
             </tr>
         </table>
-        <h3 class="professional-title" style="display:none;">Web Development Showcase</h3>
-        <table id="project-container" class="professional" style="display:none;">
+        <h3 class="professional-title">Web Development Showcase</h3>
+        <table id="project-container" class="professional">
             <tr>
                 <td>
                     <div class="pages" style="background-color: #F19863;">
@@ -93,9 +93,9 @@
                 </td>
             </tr>
         </table>
-        <hr class="art-title">                                                  
-        <h3 class="art-title">New Media Art Projects</h3>
-        <table id="project-container" class="art">
+        <hr class="art-title" style="display:none;">                                                  
+        <h3 class="art-title" style="display:none;">New Media Art Projects</h3>
+        <table id="project-container" class="art"  style="display:none;">
             <tr>
                 <td>
                     <div class="pages" style="background-color: #E25D75;">
@@ -131,7 +131,7 @@
         </table>
     </div>
     <!-- info div -->
-    <div class="info-container" style="display:none;">
+    <div class="info-container">
         <table id="my-info">
             <tr>
                 <th id="info-name">Jamie Fule</th>
