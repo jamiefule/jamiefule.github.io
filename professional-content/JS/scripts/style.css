@@ -31,6 +31,7 @@ h1, h3{
     right: 10px;
     width: 100px;
     text-align: center;
+    background-color:white !important;
 }
 
 .card{
@@ -79,6 +80,18 @@ h1, h3{
     #forecast-card{
         min-width: 875px !important;
     }
+  }
+  #bgBlobSmall{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    z-index: 9;
+    height: 75px;
+    width: auto;
+  }
+
+  #bgBlobSmall:hover{
+    cursor: pointer;
   }
 
 #bgBlobBlue{
@@ -216,4 +229,15 @@ h1, h3{
     position: absolute;
     bottom: 50%;
     z-index: 999;
+}
+
+#thanks{
+    background-color: white;
+    width: 175px;
+    margin-left: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+    z-index: 9;
+    position:absolute;
+    bottom: 100px;
 }

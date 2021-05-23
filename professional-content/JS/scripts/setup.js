@@ -10,7 +10,7 @@ window.onload = function () {
         console.log(data)
         lat = data.latitude;
         lon = data.longitude;
-        $("#location").val(data.postal_code)
+        $("#app-title").text("Weather - " + data.city)
         checkWindow()
         populateWeeklyForcast()
     });
@@ -70,7 +70,7 @@ function populateWeeklyForcast(){
                 data = JSON.parse(data)
                 console.log(data);
                 for(var i = 0; i < 7; i++){
-                    $("#day-" + (i+1)).append("<p class='weather-report'>" + weatherCleanup("High: " + (parseInt(data.dataseries[i].temp2m["max"])* 9/5 + 32) + " | Low:" + (parseInt(data.dataseries[i].temp2m["min"])* 9/5 + 32))+ "</p>")
+                    $("#day-" + (i+1)).append("<p class='weather-report'>" + weatherCleanup((parseInt(data.dataseries[i].temp2m["min"])* 9/5 + 32) + "&#176;F | " + (parseInt(data.dataseries[i].temp2m["max"])* 9/5 + 32))+ "&#176;F</p>")
                     $("#day-" + (i+1)).append("<i class='weather-icon fa-2x " + weatherKey[weatherCleanup(data.dataseries[i].weather)] +"'></i>")
             
                 }
@@ -114,3 +114,10 @@ function weatherCleanup(s){
 
     }
 }
+
+$(document).on("click", "#bgBlobSmall", function(){
+        if($("#thanks").css("display") == "block")
+            $("#thanks").css("display", "none")
+        else
+            $("#thanks").css("display", "block")
+})

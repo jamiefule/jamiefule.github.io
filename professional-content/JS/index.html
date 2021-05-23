@@ -18,11 +18,16 @@
 
 	<body>
 		<div id="banner">
-			<h1>Weather</h1>
-			<input id="location" type="text" placeholder="Zip Code"/>
+			<h1 id="app-title">Weather</h1>
 		</div>
 		<div id="fuzzy"></div>
 		<div class="content">
+			<div id="thanks" style="display: none;">
+				<b>With Help From</b><br>
+				Location API: <a target="_blank" href="https://www.abstractapi.com/ip-geolocation-api">Abstract</a><br>
+				Weather API: <a target="_blank" href="https://www.abstractapi.com/ip-geolocation-api">7Timer</a><br>
+				Blobs: <a target="_blank" href="https://www.blobmaker.app/">Blob Maker</a>
+			</div>
 			<table id="weather-container">
 				<div id="spinner-container"><img src="./assets/spinner-faster.svg" height=75></div>
 				<tr id="forecast-row">
@@ -63,5 +68,7 @@
 		</div>
 		<img id="bgBlobBlue" src="./assets/blue-blob.svg"/>
 		<img id="bgBlobPink" src="./assets/pink-blob.svg"/>
+		<img id="bgBlobSmall" src="./assets/blob-small.svg"/>
+
 	</body>
 </html>
