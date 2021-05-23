@@ -21,9 +21,10 @@
 			<h1>Weather</h1>
 			<input id="location" type="text" placeholder="Zip Code"/>
 		</div>
+		<div id="fuzzy"></div>
 		<div class="content">
 			<table id="weather-container">
-				<tr class="loading-row"><td colspan=3 ><img src="./assets/spinner-faster.svg" height=75></td></tr>
+				<div id="spinner-container"><img src="./assets/spinner-faster.svg" height=75></div>
 				<tr id="forecast-row">
 					<td colspan=2 class="card-container" id="forecast-container">
 						<div class="card" id="forecast-card">
