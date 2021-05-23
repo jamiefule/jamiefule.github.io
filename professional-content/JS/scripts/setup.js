@@ -10,6 +10,7 @@ window.onload = function () {
         console.log(data)
         lat = data.latitude;
         lon = data.longitude;
+        $("#location").val(data.postal_code)
         checkWindow()
         populateWeeklyForcast()
     });
@@ -31,23 +32,18 @@ function checkWindow(){
             $(".card").css("display", "block");
             $("#warning-message").css("display", "none");
         }
-
-        $(".break, .spacer").css("display", "inline-table");
-        $("#day-container div").css("width", "17%")
-        $("#humidity-container i").css("display", "block")
-        $("#loading-row").css("top", "30%").css("left", "calc(50% - 45px");
-
-        //undo changes
-     } else{
-        $(".break, .spacer").css("display", "none");
-        $("#day-container div").css("width", "calc(12.5% - 20px")
-
-    }
+     }
 
 }
 
 function populateWeeklyForcast(){
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const weatherKey = {"Cloudy": "fas fa-cloud",
+                         "Partly Cloudy": "fas fa-cloud-sun",
+                         "Clear": "fas fa-sun",
+                         "Light Rain": "fas fa-cloud-rain",
+                         "Rain": "fas fa-cloud-showers-heavy",
+                         "Snow": "fas fa-snowflake"}
 
     //get current week
     var d = new Date();
@@ -57,7 +53,7 @@ function populateWeeklyForcast(){
     var numDays =  Math.floor((d - y) / (24 * 60 * 60 * 1000)); 
     var week = Math.ceil(( d.getDay() + 1 + numDays) / 7);   
     var temp = d;
-    //append to table cells
+    //append date info to table cells
     for(var i = 0; i < 7; i++){
         //gets day of week like 'mon', 'tue', etc.
         let dayOfWeek = temp.toLocaleDateString('en-US', { weekday: 'long' });
@@ -67,7 +63,7 @@ function populateWeeklyForcast(){
 
         temp.setDate(temp.getDate() + 1)
     }
-
+    //append weather to forecast
     $.ajax("http://www.7timer.info/bin/api.pl?lon=" + lon + "&lat=" + lat +"&product=civillight&output=json",
         {
             success: function (data) {
@@ -75,10 +71,25 @@ function populateWeeklyForcast(){
                 console.log(data);
                 for(var i = 0; i < 7; i++){
                     $("#day-" + (i+1)).append("<p class='weather-report'>" + weatherCleanup(data.dataseries[i].weather)+ "</p>")
+                    $("#day-" + (i+1)).append("<i class='weather-icon fa-2x " + weatherKey[weatherCleanup(data.dataseries[i].weather)] +"'></i>")
             
                 }
+                //fill out wind
+                var windVal = data.dataseries[0].wind10m_max
+                var windMapping = {
+                    1: "Below 0.3m/s (Calm)",
+                    2: "0.3-3.4m/s (Light)",
+                    3: "3.4-8.0m/s (Moderate)",
+                    4: "8.0-10.8m/s (Fresh)",
+                    5: "10.8-17.2m/s (Strong)",
+                    6: "17.2-24.5m/s (Gale)",
+                    7: "24.5-32.6m/s (Storm)",
+                    8: "Over 32.6m/s (Hurricane)"
+                }
+                $("#wind-card").append("<p id='wind-val'>" + windMapping[windVal] + "</p>")
+
                 //remove loading gif
-                $("#loading-row").css("display", "none")
+                $(".loading-row td img").css("display", "none")
         }   
     });
 

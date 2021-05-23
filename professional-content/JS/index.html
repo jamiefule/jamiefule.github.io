@@ -23,21 +23,7 @@
 		</div>
 		<div class="content">
 			<table id="weather-container">
-				<tr>
-					<td class="card-container" id="wind-container">
-						<div class="card" id="wind-card">
-							<h3>Wind</h3>
-							<i class="fas fa-wind fa-4x main-icon"></i>
-						</div>
-					</td>
-					<td class="card-container" id="humidity-container">
-						<div class="card" id="humidity-card">
-							<h3>Humidity</h3>
-							<i class="fas fa-tint fa-lg main-icon"></i>
-							<i class="fas fa-tint fa-3x main-icon"></i>
-						</div>
-					</td>
-				</tr>
+				<tr class="loading-row"><td colspan=3 ><img src="./assets/spinner-faster.svg" height=75></td></tr>
 				<tr id="forecast-row">
 					<td colspan=2 class="card-container" id="forecast-container">
 						<div class="card" id="forecast-card">
@@ -46,30 +32,28 @@
 										<h3>Forecast</h3>
 										<i class="fas fa-cloud-sun-rain fa-4x main-icon"></i>
 									</div>
-									<div id="day-1">
+									<div id="day-1" class="day-card">
 										<h5 class="day-title today"></h5>
 									</div>
-									<div id="day-2">
+									<div id="day-2" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div id="day-3">
+									<div id="day-3" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div id="day-4">
+									<div id="day-4" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div class="break" style="display:none;"></div>
-									<div class="spacer" style="display:none;"></div>
-									<div id="day-5">
+									<div class="spacer" ></div>
+									<div id="day-5" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div id="day-6">
+									<div id="day-6" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div id="day-7">
+									<div id="day-7" class="day-card">
 										<h5 class="day-title"></h5>
 									</div>
-									<div class="spacer" style="display:none;"></div>
 								</div>
 							</div>
 						</td>
@@ -78,6 +62,5 @@
 		</div>
 		<img id="bgBlobBlue" src="./assets/blue-blob.svg"/>
 		<img id="bgBlobPink" src="./assets/pink-blob.svg"/>
-		<div id="loading-row"><img src="./assets/spinner-faster.svg" height=75></div>
 	</body>
 </html>
